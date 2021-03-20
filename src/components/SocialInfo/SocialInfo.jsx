@@ -38,7 +38,6 @@ const SocialInfo = () => {
         </Col>
       </Row>
     </Container>
-
   )
 }
 

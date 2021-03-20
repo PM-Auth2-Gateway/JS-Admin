@@ -3,13 +3,12 @@ import {useRouteMatch} from 'react-router-dom';
 
 import styles from './AppList.module.scss';
 
-import CreateAppModal from "./CreateAppModal/CreateAppModal";
+import CreateAppModal from "../CreateAppModal/CreateAppModal";
 import {Col, Container, ListGroup, Row} from "react-bootstrap";
-import AppPreview from "./AppPreview/AppPreview";
+import AppPreview from "../AppPreview/AppPreview";
 
 const AppList = () => {
   const {url} = useRouteMatch();
-
 
   return (
     <Container>

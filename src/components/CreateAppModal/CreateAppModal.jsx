@@ -13,7 +13,7 @@ const CreateAppModal = () => {
 
   return (
     <React.Fragment>
-      <Button variant="danger" onClick={handleShow}>
+      <Button data-test={'open-modal'} variant="danger" onClick={handleShow}>
         Create Application
       </Button>
 
@@ -32,8 +32,8 @@ const CreateAppModal = () => {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="outline-secondary" onClick={handleClose}>Cancel</Button>
-          <Button variant="primary" type="submit" onClick={submitForm}>Create</Button>
+          <Button data-test={'close-modal'} variant="outline-secondary" onClick={handleClose}>Cancel</Button>
+          <Button data-test={'submit-modal'} variant="primary" type="submit" onClick={submitForm}>Create</Button>
         </Modal.Footer>
       </Modal>
     </React.Fragment>
