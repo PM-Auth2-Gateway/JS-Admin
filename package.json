@@ -70,9 +70,9 @@
   },
   "lint-staged": {
     "./src/**/*.(js|jsx)": [
-      "eslint --fix --ext .js --ext .jsx ",
+      "eslint --fix --ext .js --ext .jsx",
       "eslint --max-warnings=0",
-      "prettier --write \"**/*.{js,jsx}\"" 
+      "prettier --write \"**/*.{js,jsx}\""
     ],
     "./src/**/(*.test).(js|jsx)": [
       "npm run test:staged"
