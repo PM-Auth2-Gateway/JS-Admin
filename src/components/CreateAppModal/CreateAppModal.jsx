@@ -13,7 +13,7 @@ const CreateAppModal = () => {
 
   return (
     <React.Fragment>
-      <Button data-test={'open-modal'} variant="danger" onClick={handleShow}>
+      <Button data-test={'open-modal'} variant='danger' onClick={handleShow}>
         Create Application
       </Button>
 
@@ -24,8 +24,8 @@ const CreateAppModal = () => {
         <Modal.Body>
           <Form.Group>
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter name of app" />
-            <Form.Text className="text-muted">
+            <Form.Control type='text' placeholder='Enter name of app' />
+            <Form.Text className='text-muted'>
               You can change the application name later in the application
               settings.
             </Form.Text>
@@ -35,15 +35,15 @@ const CreateAppModal = () => {
         <Modal.Footer>
           <Button
             data-test={'close-modal'}
-            variant="outline-secondary"
+            variant='outline-secondary'
             onClick={handleClose}
           >
             Cancel
           </Button>
           <Button
             data-test={'submit-modal'}
-            variant="primary"
-            type="submit"
+            variant='primary'
+            type='submit'
             onClick={submitForm}
           >
             Create

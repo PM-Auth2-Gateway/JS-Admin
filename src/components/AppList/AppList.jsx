@@ -17,7 +17,7 @@ const AppList = () => {
         <Col>
           <h2>Applications</h2>
         </Col>
-        <Col xs="auto">
+        <Col xs='auto'>
           <CreateAppModal />
         </Col>
       </Row>

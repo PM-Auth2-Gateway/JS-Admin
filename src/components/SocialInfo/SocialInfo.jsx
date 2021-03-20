@@ -18,7 +18,7 @@ const SocialInfo = () => {
   return (
     <Container>
       <div className={styles.socialPreview}>
-        <img src={socialIcon} className={styles.socialIcon} alt="icon" />
+        <img src={socialIcon} className={styles.socialIcon} alt='icon' />
         <h2>Social network name</h2>
         {/*TODO get from back*/}
       </div>

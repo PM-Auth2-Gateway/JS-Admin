@@ -27,7 +27,7 @@ const AppInfo = () => {
   return (
     <Container>
       <div className={styles.appPreview}>
-        <img src={appIcon} className={styles.appIcon} alt="icon" />
+        <img src={appIcon} className={styles.appIcon} alt='icon' />
         <h2>App name</h2>
         {/*TODO from backend*/}
       </div>
@@ -71,7 +71,7 @@ const AppInfo = () => {
                         <img
                           src={googleIcon}
                           className={styles.appIcon}
-                          alt="icon"
+                          alt='icon'
                         />
                         <p>Google</p>
                       </Card.Title>
@@ -88,7 +88,7 @@ const AppInfo = () => {
                         <img
                           src={facebookIcon}
                           className={styles.appIcon}
-                          alt="icon"
+                          alt='icon'
                         />
                         <p>Facebook</p>
                       </Card.Title>
@@ -112,7 +112,7 @@ const AppInfo = () => {
             <h5>Delete this application</h5>
             <p>All your apps using this client will stop working.</p>
           </Col>
-          <Col xs="auto" className={'align-self-center'}>
+          <Col xs='auto' className={'align-self-center'}>
             <Button variant={'danger'}>Delete</Button>
           </Col>
         </Row>

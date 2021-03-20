@@ -1,23 +1,21 @@
-import React, {useState as useStateMock} from "react";
-import {shallow} from 'enzyme';
+import React, { useState as useStateMock } from 'react';
+import { shallow } from 'enzyme';
 
-import CreateAppModal from "./CreateAppModal";
+import CreateAppModal from './CreateAppModal';
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
   useState: jest.fn(),
 }));
 
-
-describe("CreateAppModal Component", () => {
+describe('CreateAppModal Component', () => {
   const setState = jest.fn();
 
   beforeEach(() => {
-    useStateMock.mockImplementation(init => [init, setState]);
+    useStateMock.mockImplementation((init) => [init, setState]);
   });
 
   it('should render CreateAppModal Component', function () {
-
     const component = shallow(<CreateAppModal />);
 
     expect(component).toMatchSnapshot();
@@ -46,4 +44,4 @@ describe("CreateAppModal Component", () => {
 
     submitModalBtn.simulate('click');
   });
-})
+});

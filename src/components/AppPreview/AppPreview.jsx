@@ -9,7 +9,7 @@ const AppPreview = ({ url, name }) => {
   return (
     <div className={styles.appPreview}>
       <Link to={url}>
-        <img src={appIcon} className={styles.appIcon} alt="icon" />
+        <img src={appIcon} className={styles.appIcon} alt='icon' />
       </Link>
       <span className={styles.appName}>
         <Link to={url}>{name}</Link>
