@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Button, Modal, Form} from "react-bootstrap";
+import React, { useState } from 'react';
+import { Button, Modal, Form } from 'react-bootstrap';
 
 const CreateAppModal = () => {
   const [show, setShow] = useState(false);
@@ -9,11 +9,11 @@ const CreateAppModal = () => {
 
   const submitForm = () => {
     handleClose();
-  }
+  };
 
   return (
     <React.Fragment>
-      <Button data-test={'open-modal'} variant="danger" onClick={handleShow}>
+      <Button data-test={'open-modal'} variant='danger' onClick={handleShow}>
         Create Application
       </Button>
 
@@ -24,20 +24,34 @@ const CreateAppModal = () => {
         <Modal.Body>
           <Form.Group>
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter name of app"/>
-            <Form.Text className="text-muted">
-              You can change the application name later in the application settings.
+            <Form.Control type='text' placeholder='Enter name of app' />
+            <Form.Text className='text-muted'>
+              You can change the application name later in the application
+              settings.
             </Form.Text>
           </Form.Group>
         </Modal.Body>
 
         <Modal.Footer>
-          <Button data-test={'close-modal'} variant="outline-secondary" onClick={handleClose}>Cancel</Button>
-          <Button data-test={'submit-modal'} variant="primary" type="submit" onClick={submitForm}>Create</Button>
+          <Button
+            data-test={'close-modal'}
+            variant='outline-secondary'
+            onClick={handleClose}
+          >
+            Cancel
+          </Button>
+          <Button
+            data-test={'submit-modal'}
+            variant='primary'
+            type='submit'
+            onClick={submitForm}
+          >
+            Create
+          </Button>
         </Modal.Footer>
       </Modal>
     </React.Fragment>
-  )
-}
+  );
+};
 
 export default CreateAppModal;

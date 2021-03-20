@@ -11,17 +11,17 @@ function App() {
   return (
     <Router>
       <div className={styles.App}>
-        <Link to="/">Header</Link>
+        <Link to='/'>Header</Link>
       </div>
       <div className={styles.container}>
         <Switch>
-          <Route exact path="/applications">
+          <Route exact path='/applications'>
             <AppsList />
           </Route>
-          <Route exact path="/applications/:appId">
+          <Route exact path='/applications/:appId'>
             <AppInfo />
           </Route>
-          <Route path="/applications/:appId/social/:socialId">
+          <Route path='/applications/:appId/social/:socialId'>
             <SocialInfo />
           </Route>
         </Switch>
