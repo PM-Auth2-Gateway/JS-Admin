@@ -3,6 +3,12 @@
     "react-app",
     "prettier"
   ],
+  "rules": {
+    "jsx-quotes": [
+      2,
+      "prefer-single"
+    ]
+  },
   "plugins": [
     "prettier"
   ]
