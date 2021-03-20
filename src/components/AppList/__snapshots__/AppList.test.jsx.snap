@@ -5,7 +5,7 @@ exports[`AppList Component should render AppList Component 1`] = `
   fluid={false}
 >
   <Row
-    className="mb-5"
+    className="mb-5 align-items-center"
     noGutters={false}
   >
     <Col>

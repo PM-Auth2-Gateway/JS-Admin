@@ -1,18 +1,20 @@
 import React from "react";
 import {useRouteMatch} from 'react-router-dom';
+import classNames from "classnames";
+import {Col, Container, ListGroup, Row} from "react-bootstrap";
+
+import CreateAppModal from "../CreateAppModal/CreateAppModal";
+import AppPreview from "../AppPreview/AppPreview";
 
 import styles from './AppList.module.scss';
 
-import CreateAppModal from "../CreateAppModal/CreateAppModal";
-import {Col, Container, ListGroup, Row} from "react-bootstrap";
-import AppPreview from "../AppPreview/AppPreview";
 
 const AppList = () => {
   const {url} = useRouteMatch();
 
   return (
     <Container>
-      <Row className='mb-5'>
+      <Row className={classNames('mb-5', "align-items-center")}>
         <Col>
           <h2>Applications</h2>
         </Col>

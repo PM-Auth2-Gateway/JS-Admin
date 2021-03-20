@@ -12,8 +12,8 @@ const SocialInfo = () => {
         <img src={socialIcon} className={styles.socialIcon} alt="icon"/>
         <h2>Social network name</h2>{/*TODO get from back*/}
       </div>
-      <Row className={classNames(styles.form, "justify-content-center")}>
-        <Col xs={5}>
+      <Row className={classNames("justify-content-center", styles.form)}>
+        <Col lg={6} md={8}>
           {/*TODO get required field from back*/}
           <FormGroup>
             <FormLabel>Social Name</FormLabel>

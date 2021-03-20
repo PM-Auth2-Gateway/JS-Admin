@@ -17,11 +17,12 @@ exports[`SocialInfo Component should render SocialInfo Component 1`] = `
     </h2>
   </div>
   <Row
-    className="form justify-content-center"
+    className="justify-content-center form"
     noGutters={false}
   >
     <Col
-      xs={5}
+      lg={6}
+      md={8}
     >
       <FormGroup>
         <FormLabel
