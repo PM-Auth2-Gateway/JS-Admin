@@ -69,11 +69,12 @@
     }
   },
   "lint-staged": {
-    "./src/*.(js|jsx)": [
-      "eslint --fix src/**/*.js src/**/*.jsx --max-warnings=0",
-      "prettier --write"
+    "./src/**/*.(js|jsx)": [
+      "eslint --fix --ext .js --ext .jsx ",
+      "eslint --max-warnings=0",
+      "prettier --write \"**/*.{js,jsx}\"" 
     ],
-    "./src/(*.test).(js|jsx)": [
+    "./src/**/(*.test).(js|jsx)": [
       "npm run test:staged"
     ]
   }
