@@ -1,0 +1,24 @@
+.appPreview {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+
+  .appIcon {
+    width: 40px;
+    border-radius: 4px;
+    background-color: #eff0f2;
+  }
+
+  .appName {
+    font-size: 18px;
+
+    a {
+      color: #0A84AE;
+      text-decoration: none;
+
+      &:hover {
+        color: #053B4E;
+      }
+    }
+  }
+}

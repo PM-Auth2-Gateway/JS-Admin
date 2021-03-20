@@ -1,0 +1,17 @@
+.socialPreview {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 48px;
+
+  .socialIcon {
+    width: 64px;
+
+  }
+}
+
+.form {
+  border: 1px solid #c9cace;
+  padding: 32px;
+  border-radius: 6px;
+}
