@@ -1,0 +1,40 @@
+.appPreview {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 48px;
+
+  .appIcon {
+    width: 64px;
+    border-radius: 6px;
+    background-color: #eff0f2;
+  }
+}
+
+.form {
+  border: 1px solid #c9cace;
+  padding: 32px;
+  border-radius: 6px;
+}
+
+.card {
+  margin-bottom: 20px;
+
+  a {
+    text-decoration: none;
+  }
+
+  .socialPreview {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    .appIcon {
+      width: 32px;
+      border-radius: 50%;
+    }
+  }
+}
+
+
+

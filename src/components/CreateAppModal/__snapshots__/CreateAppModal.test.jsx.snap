@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateAppModal Component should render CreateAppModal Component 1`] = `
+<Fragment>
+  <Button
+    active={false}
+    data-test="open-modal"
+    disabled={false}
+    onClick={[Function]}
+    variant="danger"
+  >
+    Create Application
+  </Button>
+  <Modal
+    animation={true}
+    autoFocus={true}
+    backdrop={true}
+    centered={true}
+    dialogAs={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    enforceFocus={true}
+    keyboard={true}
+    onHide={[Function]}
+    restoreFocus={true}
+    show={false}
+  >
+    <ModalHeader
+      closeButton={true}
+      closeLabel="Close"
+    >
+      <ModalTitle>
+        Create Application
+      </ModalTitle>
+    </ModalHeader>
+    <ModalBody>
+      <FormGroup>
+        <FormLabel
+          column={false}
+          srOnly={false}
+        >
+          Name
+        </FormLabel>
+        <FormControl
+          placeholder="Enter name of app"
+          type="text"
+        />
+        <FormText
+          className="text-muted"
+        >
+          You can change the application name later in the application settings.
+        </FormText>
+      </FormGroup>
+    </ModalBody>
+    <ModalFooter>
+      <Button
+        active={false}
+        data-test="close-modal"
+        disabled={false}
+        onClick={[Function]}
+        variant="outline-secondary"
+      >
+        Cancel
+      </Button>
+      <Button
+        active={false}
+        data-test="submit-modal"
+        disabled={false}
+        onClick={[Function]}
+        type="submit"
+        variant="primary"
+      >
+        Create
+      </Button>
+    </ModalFooter>
+  </Modal>
+</Fragment>
+`;

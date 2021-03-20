@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppPreview Component should render AppPreview Component 1`] = `
+<div
+  className="appPreview"
+>
+  <Link
+    to="/application/1"
+  >
+    <img
+      alt="icon"
+      className="appIcon"
+      src="app-icon.svg"
+    />
+  </Link>
+  <span
+    className="appName"
+  >
+    <Link
+      to="/application/1"
+    >
+      App Name
+    </Link>
+  </span>
+</div>
+`;
