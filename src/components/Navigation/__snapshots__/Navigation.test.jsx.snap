@@ -25,6 +25,7 @@ exports[`Navigation component should be rendered 1`] = `
     </NavbarBrand>
   </NavLink>
   <Nav
+    className="mr-auto"
     fill={false}
     justify={false}
   >
@@ -119,5 +120,44 @@ exports[`Navigation component should be rendered 1`] = `
       Docs
     </NavLink>
   </Nav>
+  <Dropdown
+    className="mr-3"
+    navbar={false}
+  >
+    <DropdownToggle
+      variant="primary"
+    >
+      Login with
+    </DropdownToggle>
+    <DropdownMenu
+      align="left"
+      alignRight={false}
+      flip={true}
+    >
+      <DropdownItem
+        as={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          }
+        }
+        disabled={false}
+        onClick={[Function]}
+      >
+        Facebook
+      </DropdownItem>
+      <DropdownItem
+        as={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          }
+        }
+        disabled={false}
+      >
+        Google
+      </DropdownItem>
+    </DropdownMenu>
+  </Dropdown>
 </Navbar>
 `;
