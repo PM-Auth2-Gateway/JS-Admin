@@ -24,11 +24,15 @@ export const useFacebookAuth = () => {
   }, []);
 
   const login = () => {
-    window.FB.login(() => {
-      window.FB.api('/me?fields=id,name,email,picture', (user) => {
-        setUser(user);
-        setAuthenticated(true);
-      });
+    window.FB.login((res) => {
+      if (res.authResponse) {
+        window.FB.api('/me?fields=id,name,email,picture', (user) => {
+          setUser(user);
+          setAuthenticated(true);
+        });
+      } else {
+        console.log('auth cancelled');
+      }
     });
   };
 
