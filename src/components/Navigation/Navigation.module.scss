@@ -2,10 +2,6 @@
   border-bottom: 1px solid rgb(238, 238, 238);
 }
 
-@media (max-width: 768px) {
-  .dropdown {
-    top:75px;
-   left: 50%;
-   transform: translate(-50%,-50%);
-  }
+.dropdown{
+  right: auto;
 }
