@@ -125,9 +125,20 @@ exports[`Navigation component should be rendered 1`] = `
     navbar={false}
   >
     <DropdownToggle
-      variant="primary"
+      variant="light"
     >
-      Login with
+      <Image
+        alt="test"
+        className="mr-2"
+        fluid={false}
+        h="30"
+        rounded={false}
+        roundedCircle={true}
+        src="test"
+        thumbnail={false}
+        width="30"
+      />
+      test
     </DropdownToggle>
     <DropdownMenu
       align="left"
@@ -142,10 +153,159 @@ exports[`Navigation component should be rendered 1`] = `
           }
         }
         disabled={false}
-        onClick={[Function]}
       >
-        Facebook
+        Log out
       </DropdownItem>
+    </DropdownMenu>
+  </Dropdown>
+</Navbar>
+`;
+
+exports[`Navigation component should render user data 1`] = `
+<Navbar
+  className="border"
+  collapseOnSelect={false}
+  expand={true}
+  variant="light"
+>
+  <NavLink
+    to="/"
+  >
+    <NavbarBrand>
+      <Image
+        alt="icon"
+        className="mr-2 align-center align-top"
+        fluid={false}
+        height="30"
+        rounded={true}
+        roundedCircle={false}
+        src="/favicon.ico"
+        thumbnail={false}
+        width="30"
+      />
+    </NavbarBrand>
+  </NavLink>
+  <Nav
+    className="mr-auto"
+    fill={false}
+    justify={false}
+  >
+    <NavLink
+      activeClassName="text-primary"
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "propTypes": Object {
+            "activeClassName": [Function],
+            "activeStyle": [Function],
+            "aria-current": [Function],
+            "className": [Function],
+            "exact": [Function],
+            "innerRef": [Function],
+            "isActive": [Function],
+            "location": [Function],
+            "onClick": [Function],
+            "replace": [Function],
+            "sensitive": [Function],
+            "strict": [Function],
+            "style": [Function],
+            "target": [Function],
+            "to": [Function],
+          },
+          "render": [Function],
+        }
+      }
+      disabled={false}
+      to="/applications"
+    >
+      Applications
+    </NavLink>
+    <NavLink
+      activeClassName="text-primary"
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "propTypes": Object {
+            "activeClassName": [Function],
+            "activeStyle": [Function],
+            "aria-current": [Function],
+            "className": [Function],
+            "exact": [Function],
+            "innerRef": [Function],
+            "isActive": [Function],
+            "location": [Function],
+            "onClick": [Function],
+            "replace": [Function],
+            "sensitive": [Function],
+            "strict": [Function],
+            "style": [Function],
+            "target": [Function],
+            "to": [Function],
+          },
+          "render": [Function],
+        }
+      }
+      disabled={false}
+      to="/guide"
+    >
+      Guide
+    </NavLink>
+    <NavLink
+      activeClassName="text-primary"
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "propTypes": Object {
+            "activeClassName": [Function],
+            "activeStyle": [Function],
+            "aria-current": [Function],
+            "className": [Function],
+            "exact": [Function],
+            "innerRef": [Function],
+            "isActive": [Function],
+            "location": [Function],
+            "onClick": [Function],
+            "replace": [Function],
+            "sensitive": [Function],
+            "strict": [Function],
+            "style": [Function],
+            "target": [Function],
+            "to": [Function],
+          },
+          "render": [Function],
+        }
+      }
+      disabled={false}
+      to="/docs"
+    >
+      Docs
+    </NavLink>
+  </Nav>
+  <Dropdown
+    className="mr-3"
+    navbar={false}
+  >
+    <DropdownToggle
+      variant="light"
+    >
+      <Image
+        alt="test"
+        className="mr-2"
+        fluid={false}
+        h="30"
+        rounded={false}
+        roundedCircle={true}
+        src="test"
+        thumbnail={false}
+        width="30"
+      />
+      test
+    </DropdownToggle>
+    <DropdownMenu
+      align="left"
+      alignRight={false}
+      flip={true}
+    >
       <DropdownItem
         as={
           Object {
@@ -155,7 +315,7 @@ exports[`Navigation component should be rendered 1`] = `
         }
         disabled={false}
       >
-        Google
+        Log out
       </DropdownItem>
     </DropdownMenu>
   </Dropdown>

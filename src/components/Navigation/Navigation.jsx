@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Nav, Navbar, Dropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import useFacebookAuth from '../../hooks/useFacebookAuth';
+import { useFacebookAuth } from '../../hooks/useFacebookAuth';
 
 import styles from './Navigation.module.scss';
 

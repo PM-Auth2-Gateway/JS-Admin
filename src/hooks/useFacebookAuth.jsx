@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useFacebookAuth = () => {
+export const useFacebookAuth = () => {
   const [user, setUser] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
   useEffect(() => {
@@ -31,5 +31,3 @@ const useFacebookAuth = () => {
 
   return { login, user, authenticated, logout };
 };
-
-export default useFacebookAuth;
