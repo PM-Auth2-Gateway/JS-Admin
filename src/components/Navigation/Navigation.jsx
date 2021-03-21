@@ -40,7 +40,7 @@ const Navigation = () => {
             Docs
           </Nav.Link>
         </Nav>
-        <Dropdown className='mr-3'>
+        <Dropdown className='mr-5'>
           {!authenticated ? (
             <>
               <Dropdown.Toggle variant='primary'>Login with</Dropdown.Toggle>
