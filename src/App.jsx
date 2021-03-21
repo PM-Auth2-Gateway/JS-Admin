@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import AppsList from './components/AppList/AppList';
 import AppInfo from './components/AppInfo/AppInfo';
 import SocialInfo from './components/SocialInfo/SocialInfo';
+import Navigation from './components/Navigation/Navigation';
 
 import styles from './App.module.scss';
 
@@ -11,7 +12,7 @@ function App() {
   return (
     <Router>
       <div className={styles.App}>
-        <Link to='/'>Header</Link>
+        <Navigation />
       </div>
       <div className={styles.container}>
         <Switch>

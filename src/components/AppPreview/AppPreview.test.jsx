@@ -3,10 +3,6 @@ import { shallow } from 'enzyme';
 
 import AppPreview from './AppPreview';
 
-jest.mock('react-router-dom', () => ({
-  Link: 'Link',
-}));
-
 describe('AppPreview Component', () => {
   it('should render AppPreview Component', function () {
     const component = shallow(
