@@ -1,7 +1,6 @@
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import React from 'react';
 import { Link, useRouteMatch, useParams, useHistory } from 'react-router-dom';
-
 import {
   Container,
   Row,
@@ -22,7 +21,7 @@ import selector from './AppInfo.selector';
 import appIcon from '../../assets/app-icon.svg';
 import googleIcon from '../../assets/google-avatar.png';
 import facebookIcon from '../../assets/facebook-avatar.png';
-import { useEffect } from 'react';
+
 import {
   deleteAppById,
   loadCurrentApp,

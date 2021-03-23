@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import appIcon from '../../assets/app-icon.svg';
-
 import styles from './AppPreview.module.scss';
+
+import appIcon from '../../assets/app-icon.svg';
 
 const AppPreview = ({ url, name }) => {
   return (

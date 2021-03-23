@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Button, Modal, Form } from 'react-bootstrap';
-import { addApp } from '../../ducks/apps';
 import { Formik, ErrorMessage } from 'formik';
+import { Button, Modal, Form } from 'react-bootstrap';
+
+import { addApp } from '../../ducks/apps';
 
 const CreateAppModal = () => {
   const dispatch = useDispatch();

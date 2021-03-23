@@ -1,14 +1,15 @@
-import { useRouteMatch } from 'react-router';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
+import { useEffect } from 'react';
+import { useRouteMatch } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
 import { Col, Container, ListGroup, Row } from 'react-bootstrap';
 
 import styles from './AppList.module.scss';
 import selector from './AppList.selector';
 
-import CreateAppModal from '../CreateAppModal/CreateAppModal';
 import AppPreview from '../AppPreview/AppPreview';
+import CreateAppModal from '../CreateAppModal/CreateAppModal';
+
 import { clearAllApps, loadAllApps } from '../../ducks/apps';
 
 const AppList = () => {
