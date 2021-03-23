@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export const useFacebookAuth = () => {
-  const [user, setUser] = useState(null);
-  const [authenticated, setAuthenticated] = useState(false);
   useEffect(() => {
     window.fbAsyncInit = function () {
       window.FB.init({
@@ -23,24 +21,25 @@ export const useFacebookAuth = () => {
     })(document, 'script', 'facebook-jssdk');
   }, []);
 
-  const login = () => {
-    window.FB.login((res) => {
-      if (res.authResponse) {
-        window.FB.api('/me?fields=id,name,email,picture', (user) => {
-          setUser(user);
-          setAuthenticated(true);
+  const login = () =>
+    new Promise((resolve) => {
+      if (window.FB)
+        window.FB.login((res) => {
+          if (res.authResponse) {
+            window.FB.api('/me?fields=id,name,email,picture', (user) => {
+              resolve(user);
+            });
+          }
         });
-      } else {
-        console.log('auth cancelled');
-      }
     });
-  };
 
-  const logout = () => {
-    window.FB.logout(() => {
-      setAuthenticated(false);
+  const logout = () =>
+    new Promise((resolve) => {
+      if (window.FB)
+        window.FB.logout(() => {
+          resolve();
+        });
     });
-  };
 
-  return { login, user, authenticated, logout };
+  return { loginWithFacebook: login, logoutWithFacebook: logout };
 };
