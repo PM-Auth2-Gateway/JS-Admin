@@ -25,14 +25,17 @@ export default class SocialsApiService {
   static async post(authToken, { name }) {
     const url = SocialsApiService.#buildUrl();
 
-    return axios.post(url, {
-      headers: {
-        Authentication: authToken,
-      },
-      data: {
+    return axios.post(
+      url,
+      {
         name,
       },
-    });
+      {
+        headers: {
+          Authentication: authToken,
+        },
+      }
+    );
   }
 
   static #buildUrl = () => {

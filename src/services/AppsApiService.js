@@ -25,14 +25,17 @@ export default class AppsApiService {
   static async updateById(authToken, { id, name }) {
     const url = AppsApiService.#buildUrl();
 
-    return axios.put(url.href + `/${id}`, {
-      headers: {
-        Authentication: authToken,
-      },
-      data: {
+    return axios.put(
+      url.href + `/${id}`,
+      {
         name,
       },
-    });
+      {
+        headers: {
+          Authentication: authToken,
+        },
+      }
+    );
   }
 
   static async deleteById(authToken, { id }) {
@@ -48,14 +51,17 @@ export default class AppsApiService {
   static async post(authToken, { name }) {
     const url = AppsApiService.#buildUrl();
 
-    return axios.post(url, {
-      headers: {
-        Authentication: authToken,
-      },
-      data: {
+    return axios.post(
+      url,
+      {
         name,
       },
-    });
+      {
+        headers: {
+          Authentication: authToken,
+        },
+      }
+    );
   }
 
   static #buildUrl = () => {
