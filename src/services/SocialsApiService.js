@@ -2,7 +2,7 @@ import axios from 'axios';
 import config from '../config';
 
 export default class SocialsApiService {
-  static async get(authToken) {
+  static get(authToken) {
     const url = SocialsApiService.#buildUrl();
 
     return axios.get(url, {
@@ -12,7 +12,7 @@ export default class SocialsApiService {
     });
   }
 
-  static async getById(authToken, { id }) {
+  static getById(authToken, { id }) {
     const url = SocialsApiService.#buildUrl();
 
     return axios.get(url.href + `/${id}`, {
@@ -22,7 +22,7 @@ export default class SocialsApiService {
     });
   }
 
-  static async post(authToken, { name }) {
+  static post(authToken, { name }) {
     const url = SocialsApiService.#buildUrl();
 
     return axios.post(

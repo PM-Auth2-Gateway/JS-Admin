@@ -2,7 +2,7 @@ import axios from 'axios';
 import config from '../config';
 
 export default class AppsApiService {
-  static async get(authToken) {
+  static get(authToken) {
     const url = AppsApiService.#buildUrl();
 
     return axios.get(url, {
@@ -12,7 +12,7 @@ export default class AppsApiService {
     });
   }
 
-  static async getById(authToken, { id }) {
+  static getById(authToken, { id }) {
     const url = AppsApiService.#buildUrl();
 
     return axios.get(url.href + `/${id}`, {
@@ -22,7 +22,7 @@ export default class AppsApiService {
     });
   }
 
-  static async updateById(authToken, { id, name }) {
+  static updateById(authToken, { id, name }) {
     const url = AppsApiService.#buildUrl();
 
     return axios.put(
@@ -38,7 +38,7 @@ export default class AppsApiService {
     );
   }
 
-  static async deleteById(authToken, { id }) {
+  static deleteById(authToken, { id }) {
     const url = AppsApiService.#buildUrl();
 
     return axios.delete(url.href + `/${id}`, {
@@ -48,7 +48,7 @@ export default class AppsApiService {
     });
   }
 
-  static async post(authToken, { name }) {
+  static post(authToken, { name }) {
     const url = AppsApiService.#buildUrl();
 
     return axios.post(
