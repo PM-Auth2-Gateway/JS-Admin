@@ -22,7 +22,6 @@ export const loadAllApps = () => (dispatch) => {
 };
 
 export const addApp = (name) => (dispatch) => {
-  debugger;
   AppsApiService.post(config.authToken, { name })
     .then((response) => {
       dispatch(addAll(response.data));

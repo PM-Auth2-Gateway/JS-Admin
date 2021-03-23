@@ -59,6 +59,6 @@ export default class AppsApiService {
   }
 
   static #buildUrl = () => {
-    return new URL('/applications', config.API_ENDPOINT);
+    return new URL('/Admin/applications', config.API_ENDPOINT);
   };
 }

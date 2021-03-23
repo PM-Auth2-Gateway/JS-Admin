@@ -36,6 +36,6 @@ export default class SocialsApiService {
   }
 
   static #buildUrl = () => {
-    return new URL('/socials', config.API_ENDPOINT);
+    return new URL('/Admin/socials', config.API_ENDPOINT);
   };
 }
