@@ -1,5 +1,6 @@
+import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch, useParams, useHistory } from 'react-router-dom';
 
 import {
   Container,
@@ -16,20 +17,44 @@ import {
 } from 'react-bootstrap';
 
 import styles from './AppInfo.module.scss';
+import selector from './AppInfo.selector';
 
 import appIcon from '../../assets/app-icon.svg';
 import googleIcon from '../../assets/google-avatar.png';
 import facebookIcon from '../../assets/facebook-avatar.png';
+import { useEffect } from 'react';
+import {
+  deleteAppById,
+  loadCurrentApp,
+  removeCurrentApp,
+} from '../../ducks/apps';
 
 const AppInfo = () => {
   const { url } = useRouteMatch();
+  const history = useHistory();
+  const { appId } = useParams();
+  const dispatch = useDispatch();
+
+  const { current } = useSelector(selector);
+
+  useEffect(() => {
+    dispatch(loadCurrentApp(appId));
+
+    return () => {
+      dispatch(removeCurrentApp());
+    };
+  }, [dispatch, appId]);
+
+  const onDelete = () => {
+    dispatch(deleteAppById(appId));
+    history.push('/applications');
+  };
 
   return (
     <Container>
       <div className={styles.appPreview}>
         <img src={appIcon} className={styles.appIcon} alt='icon' />
-        <h2>App name</h2>
-        {/*TODO from backend*/}
+        <h2>{current && current.name}</h2>
       </div>
       <div className={styles.form}>
         <ListGroup variant={'flush'}>
@@ -39,17 +64,20 @@ const AppInfo = () => {
                 <h4>Basic Information</h4>
               </Col>
               <Col>
-                {/*TODO get from backend basic info*/}
                 <FormGroup>
                   <FormLabel>Name</FormLabel>
-                  <FormControl type={'text'} />
+                  <FormControl
+                    type={'text'}
+                    readOnly
+                    defaultValue={current && current.name}
+                  />
                 </FormGroup>
                 <FormGroup>
                   <FormLabel>App ID</FormLabel>
                   <FormControl
                     type={'text'}
                     readOnly
-                    defaultValue={'sadasdsadsad'}
+                    defaultValue={current && current.id}
                   />
                 </FormGroup>
 
@@ -113,7 +141,9 @@ const AppInfo = () => {
             <p>All your apps using this client will stop working.</p>
           </Col>
           <Col xs='auto' className={'align-self-center'}>
-            <Button variant={'danger'}>Delete</Button>
+            <Button variant={'danger'} onClick={onDelete}>
+              Delete
+            </Button>
           </Col>
         </Row>
       </Alert>

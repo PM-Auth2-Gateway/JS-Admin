@@ -1,15 +1,29 @@
-import React from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch } from 'react-router';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
 import { Col, Container, ListGroup, Row } from 'react-bootstrap';
 
+import styles from './AppList.module.scss';
+import selector from './AppList.selector';
+
 import CreateAppModal from '../CreateAppModal/CreateAppModal';
 import AppPreview from '../AppPreview/AppPreview';
-
-import styles from './AppList.module.scss';
+import { clearAllApps, loadAllApps } from '../../ducks/apps';
 
 const AppList = () => {
+  const dispatch = useDispatch();
   const { url } = useRouteMatch();
+
+  const allApp = useSelector(selector);
+
+  useEffect(() => {
+    dispatch(loadAllApps());
+
+    return () => {
+      dispatch(clearAllApps());
+    };
+  }, [dispatch]);
 
   return (
     <Container>
@@ -22,12 +36,11 @@ const AppList = () => {
         </Col>
       </Row>
       <ListGroup variant={'flush'}>
-        <ListGroup.Item className={styles.listItem}>
-          <AppPreview url={`${url}/1`} name={'asd'} />
-        </ListGroup.Item>
-        <ListGroup.Item className={styles.listItem}>
-          <AppPreview url={`${url}/2`} name={'asdasfdgfh'} />
-        </ListGroup.Item>
+        {allApp.map((app) => (
+          <ListGroup.Item key={app.id} className={styles.listItem}>
+            <AppPreview url={`${url}/${app.id}`} name={app.name} />
+          </ListGroup.Item>
+        ))}
       </ListGroup>
     </Container>
   );
