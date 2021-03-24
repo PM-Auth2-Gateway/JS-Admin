@@ -1,47 +1,51 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Image, Nav, Navbar, Dropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { useFacebookAuth } from '../../hooks/useFacebookAuth';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import GoogleLogin from 'react-google-login';
 
 import styles from './Navigation.module.scss';
-import useGoogleAuth from '../../hooks/useGoogleAuth';
 
 const Navigation = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem('user')) || null
+  );
+
   const [authenticated, setAuthenticated] = useState(false);
 
-  const { loginWithFacebook, logoutWithFacebook } = useFacebookAuth();
-  const { loginWithGoogle, logoutWithGoogle } = useGoogleAuth();
-
-  const login = (provider) => {
-    switch (provider) {
-      case 'facebook':
-        loginWithFacebook().then((user) => {
-          setUser({ ...user, picture: user.picture.data.url });
-          setAuthenticated(true);
-        });
-        break;
-      case 'google':
-        loginWithGoogle().then((user) => {
-          setUser(user);
-          setAuthenticated(true);
-        });
-        break;
-      default:
-        break;
+  useEffect(() => {
+    if (user) {
+      setAuthenticated(true);
     }
+    localStorage.setItem('user', JSON.stringify(user));
+  }, [user]);
+
+  const responseFacebook = (res) => {
+    setUser({
+      name: res.name,
+      id: res.id,
+      email: res.email,
+      picture: res.picture.data.url,
+    });
+    setAuthenticated(true);
   };
 
   const logout = () => {
-    logoutWithGoogle().then(() => {
-      setAuthenticated(false);
-      setUser(null);
+    setUser(null);
+    setAuthenticated(false);
+    localStorage.clear();
+  };
+
+  const responseGoogle = (res) => {
+    const { profileObj } = res;
+    setUser({
+      name: profileObj.name,
+      id: profileObj.googleId,
+      email: profileObj.email,
+      picture: profileObj.imageUrl,
     });
-    logoutWithFacebook().then(() => {
-      setAuthenticated(false);
-      setUser(null);
-    });
+    setAuthenticated(true);
   };
 
   return (
@@ -82,12 +86,30 @@ const Navigation = () => {
               <Dropdown.Menu
                 className={classNames(styles.dropdown, 'dropdown-menu-right')}
               >
-                <Dropdown.Item onClick={() => login('facebook')}>
-                  Facebook
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => login('google')}>
-                  Google
-                </Dropdown.Item>
+                <FacebookLogin
+                  appId='839201246938380'
+                  autoLoad={false}
+                  callback={responseFacebook}
+                  fields='name,email,picture'
+                  render={(renderProps) => (
+                    <Dropdown.Item onClick={renderProps.onClick}>
+                      Facebook
+                    </Dropdown.Item>
+                  )}
+                />
+                <GoogleLogin
+                  clientId='792255729562-tjcf5k4uv35et7e3v0e1g2pkmqibpsn8.apps.googleusercontent.com'
+                  render={(renderProps) => (
+                    <Dropdown.Item
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                    >
+                      Google
+                    </Dropdown.Item>
+                  )}
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                />
               </Dropdown.Menu>
             </>
           ) : (
@@ -106,7 +128,7 @@ const Navigation = () => {
               <Dropdown.Menu
                 className={classNames(styles.dropdown, 'dropdown-menu-right')}
               >
-                <Dropdown.Item onClick={logout}>Log out</Dropdown.Item>
+                <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
               </Dropdown.Menu>
             </>
           )}
