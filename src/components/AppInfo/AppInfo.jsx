@@ -5,14 +5,11 @@ import {
   Container,
   Row,
   Col,
-  FormGroup,
-  FormLabel,
-  FormControl,
-  Button,
   ListGroup,
   ListGroupItem,
   Card,
   Alert,
+  Spinner,
 } from 'react-bootstrap';
 
 import styles from './AppInfo.module.scss';
@@ -21,20 +18,23 @@ import selector from './AppInfo.selector';
 import appIcon from '../../assets/app-icon.svg';
 import googleIcon from '../../assets/google-avatar.png';
 import facebookIcon from '../../assets/facebook-avatar.png';
+import DeleteAppModal from '../DeleteAppModal/DeleteAppModal';
 
 import {
-  deleteAppById,
+  deleteCurrentApp,
   loadCurrentApp,
   removeCurrentApp,
-} from '../../ducks/apps';
+  updateCurrentApp,
+} from '../../ducks/apps/current';
+import EditAppForm from '../EditAppForm/EditAppForm';
 
 const AppInfo = () => {
-  const { url } = useRouteMatch();
   const history = useHistory();
-  const { appId } = useParams();
   const dispatch = useDispatch();
 
-  const { current } = useSelector(selector);
+  const { url } = useRouteMatch();
+  const { appId } = useParams();
+  const { current, loading } = useSelector(selector);
 
   useEffect(() => {
     dispatch(loadCurrentApp(appId));
@@ -44,16 +44,19 @@ const AppInfo = () => {
     };
   }, [dispatch, appId]);
 
+  const onEdit = (values) => {
+    dispatch(updateCurrentApp(values));
+  };
+
   const onDelete = () => {
-    dispatch(deleteAppById(appId));
-    history.push('/applications');
+    dispatch(deleteCurrentApp(appId)).then(history.push('/applications'));
   };
 
   return (
     <Container>
       <div className={styles.appPreview}>
         <img src={appIcon} className={styles.appIcon} alt='icon' />
-        <h2>{current && current.name}</h2>
+        {loading ? <Spinner animation='border' /> : <h2>{current.name}</h2>}
       </div>
       <div className={styles.form}>
         <ListGroup variant={'flush'}>
@@ -63,24 +66,11 @@ const AppInfo = () => {
                 <h4>Basic Information</h4>
               </Col>
               <Col>
-                <FormGroup>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl
-                    type={'text'}
-                    readOnly
-                    defaultValue={current && current.name}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <FormLabel>App ID</FormLabel>
-                  <FormControl
-                    type={'text'}
-                    readOnly
-                    defaultValue={current && current.id}
-                  />
-                </FormGroup>
-
-                <Button variant={'info'}>Save Changes</Button>
+                {loading ? (
+                  <Spinner animation='border' />
+                ) : (
+                  <EditAppForm initialValues={current} onEdit={onEdit} />
+                )}
               </Col>
             </Row>
           </ListGroupItem>
@@ -140,9 +130,7 @@ const AppInfo = () => {
             <p>All your apps using this client will stop working.</p>
           </Col>
           <Col xs='auto' className={'align-self-center'}>
-            <Button variant={'danger'} onClick={onDelete}>
-              Delete
-            </Button>
+            <DeleteAppModal onDelete={onDelete} />
           </Col>
         </Row>
       </Alert>
