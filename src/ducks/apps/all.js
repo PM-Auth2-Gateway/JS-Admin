@@ -14,7 +14,7 @@ export const loadAllApps = () => async (dispatch) => {
     const res = await AppsApiService.get(config.authToken);
 
     dispatch(loadAll(res.data));
-    dispatch(setError(''));
+    dispatch(setError(null));
   } catch (error) {
     dispatch(setError(error));
   } finally {
@@ -28,7 +28,7 @@ export const addApp = (name) => async (dispatch) => {
     const res = await AppsApiService.post(config.authToken, { name });
 
     dispatch(addAll(res.data));
-    dispatch(setError(''));
+    dispatch(setError(null));
   } catch (error) {
     dispatch(setError(error));
   } finally {
@@ -71,7 +71,7 @@ const setError = (msg) => ({
 const initialState = {
   value: [],
   loading: false,
-  error: '',
+  error: null,
 };
 
 export const reducer = (state = initialState, action = {}) => {

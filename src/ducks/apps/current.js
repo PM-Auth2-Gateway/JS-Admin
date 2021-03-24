@@ -15,7 +15,7 @@ export const loadCurrentApp = (id) => async (dispatch) => {
     const res = await AppsApiService.getById(config.authToken, { id });
 
     dispatch(setCurrent(res.data));
-    dispatch(setError(''));
+    dispatch(setError(null));
   } catch (error) {
     dispatch(setError(error));
   } finally {
@@ -29,7 +29,7 @@ export const updateCurrentApp = (data) => async (dispatch) => {
     const res = await AppsApiService.updateById(config.authToken, data);
 
     dispatch(updateCurrent(res.data));
-    dispatch(setError(''));
+    dispatch(setError(null));
   } catch (error) {
     dispatch(setError(error));
   } finally {
@@ -43,7 +43,7 @@ export const deleteCurrentApp = (id) => async (dispatch) => {
     await AppsApiService.deleteById(config.authToken, { id });
 
     dispatch(deleteCurrent());
-    dispatch(setError(''));
+    dispatch(setError(null));
   } catch (error) {
     dispatch(setError(error));
   } finally {
@@ -87,7 +87,7 @@ const setError = (msg) => ({
 const initialState = {
   value: {},
   loading: false,
-  error: '',
+  error: null,
 };
 
 export const reducer = (state = initialState, action = {}) => {
@@ -105,12 +105,12 @@ export const reducer = (state = initialState, action = {}) => {
     case DELETE_CURRENT:
       return {
         ...state,
-        value: null,
+        value: {},
       };
     case REMOVE_CURRENT:
       return {
         ...state,
-        value: null,
+        value: {},
       };
     case SET_LOADING:
       return {
