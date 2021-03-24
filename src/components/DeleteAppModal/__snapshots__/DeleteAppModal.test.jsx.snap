@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteAppModal Component should render DeleteAppModal Component 1`] = `
+<Fragment>
+  <Button
+    active={false}
+    data-test="open-modal"
+    disabled={false}
+    onClick={[Function]}
+    variant="danger"
+  >
+    Delete
+  </Button>
+  <Modal
+    animation={true}
+    autoFocus={true}
+    backdrop={true}
+    centered={true}
+    dialogAs={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    enforceFocus={true}
+    keyboard={true}
+    onHide={[Function]}
+    restoreFocus={true}
+    show={false}
+  >
+    <ModalHeader
+      closeButton={true}
+      closeLabel="Close"
+    >
+      <ModalTitle>
+        Delete Application
+      </ModalTitle>
+    </ModalHeader>
+    <ModalBody>
+      Are you sure you want to delete this application?
+    </ModalBody>
+    <ModalFooter>
+      <Button
+        active={false}
+        data-test="close-modal"
+        disabled={false}
+        onClick={[Function]}
+        variant="outline-secondary"
+      >
+        Cancel
+      </Button>
+      <Button
+        active={false}
+        data-test="submit-modal"
+        disabled={false}
+        onClick={[Function]}
+        variant="primary"
+      >
+        Delete
+      </Button>
+    </ModalFooter>
+  </Modal>
+</Fragment>
+`;

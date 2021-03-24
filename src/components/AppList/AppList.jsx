@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { useEffect } from 'react';
-import { useRouteMatch } from 'react-router';
+import { useRouteMatch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Container, ListGroup, Row, Spinner } from 'react-bootstrap';
 

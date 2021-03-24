@@ -13,7 +13,7 @@ exports[`AppInfo Component should render AppInfo Component 1`] = `
       src="app-icon.svg"
     />
     <h2>
-      App name
+      Test
     </h2>
   </div>
   <div
@@ -35,37 +35,15 @@ exports[`AppInfo Component should render AppInfo Component 1`] = `
             </h4>
           </Col>
           <Col>
-            <FormGroup>
-              <FormLabel
-                column={false}
-                srOnly={false}
-              >
-                Name
-              </FormLabel>
-              <FormControl
-                type="text"
-              />
-            </FormGroup>
-            <FormGroup>
-              <FormLabel
-                column={false}
-                srOnly={false}
-              >
-                App ID
-              </FormLabel>
-              <FormControl
-                defaultValue="sadasdsadsad"
-                readOnly={true}
-                type="text"
-              />
-            </FormGroup>
-            <Button
-              active={false}
-              disabled={false}
-              variant="info"
-            >
-              Save Changes
-            </Button>
+            <EditAppForm
+              initialValues={
+                Object {
+                  "id": 1,
+                  "name": "Test",
+                }
+              }
+              onEdit={[Function]}
+            />
           </Col>
         </Row>
       </ListGroupItem>
@@ -181,13 +159,9 @@ exports[`AppInfo Component should render AppInfo Component 1`] = `
         className="align-self-center"
         xs="auto"
       >
-        <Button
-          active={false}
-          disabled={false}
-          variant="danger"
-        >
-          Delete
-        </Button>
+        <DeleteAppModal
+          onDelete={[Function]}
+        />
       </Col>
     </Row>
   </Alert>
