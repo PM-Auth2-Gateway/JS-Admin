@@ -1,8 +1,13 @@
-import { createSelector } from 'reselect';
+import { createStructuredSelector } from 'reselect';
 
-const selector = createSelector(
-  (globalState) => globalState.apps,
-  (apps) => apps.all
-);
+const currentSelector = (globalState) => globalState.appsAll.value;
+const loadingSelector = (globalState) => globalState.appsAll.loading;
+const errorSelector = (globalState) => globalState.appsAll.error;
+
+const selector = createStructuredSelector({
+  all: currentSelector,
+  loading: loadingSelector,
+  error: errorSelector,
+});
 
 export default selector;
