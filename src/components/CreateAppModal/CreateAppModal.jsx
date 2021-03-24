@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { Button, Modal, Form } from 'react-bootstrap';
 
-import { addApp } from '../../ducks/apps';
+import { addApp } from '../../ducks/apps/all';
+
+const AppSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(5, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Name is required'),
+});
 
 const CreateAppModal = () => {
   const dispatch = useDispatch();
@@ -15,14 +23,6 @@ const CreateAppModal = () => {
 
   const initialValues = {
     name: '',
-  };
-
-  const validate = (values) => {
-    const errors = {};
-
-    if (!values.name) errors.name = 'Name is required';
-
-    return errors;
   };
 
   const onSubmit = (values) => {
@@ -39,7 +39,7 @@ const CreateAppModal = () => {
       <Modal show={show} onHide={handleClose} centered>
         <Formik
           initialValues={initialValues}
-          validate={validate}
+          validationSchema={AppSchema}
           onSubmit={onSubmit}
         >
           {({
@@ -71,7 +71,7 @@ const CreateAppModal = () => {
                       <ErrorMessage name='name' />
                     </Form.Control.Feedback>
                   ) : null}
-                  <Form.Text className='text-muted'>
+                  <Form.Text muted>
                     You can change the application name later in the application
                     settings.
                   </Form.Text>
