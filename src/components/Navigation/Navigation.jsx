@@ -1,13 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Image, Nav, Navbar, Dropdown } from 'react-bootstrap';
+import { Image, Nav, Navbar, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { useFacebookAuth } from '../../hooks/useFacebookAuth';
 
 import styles from './Navigation.module.scss';
+import LoginApiService from './../../services/LoginApiService';
 
 const Navigation = () => {
-  const { login, user, authenticated, logout } = useFacebookAuth();
+  const login = () => {
+    LoginApiService.login();
+  };
 
   return (
     <Navbar collapseOnSelect expand='md' className={styles.border}>
@@ -40,38 +42,7 @@ const Navigation = () => {
             Docs
           </Nav.Link>
         </Nav>
-        <Dropdown className='mr-5'>
-          {!authenticated ? (
-            <>
-              <Dropdown.Toggle variant='primary'>Login with</Dropdown.Toggle>
-              <Dropdown.Menu
-                className={classNames(styles.dropdown, 'dropdown-menu-right')}
-              >
-                <Dropdown.Item onClick={login}>Facebook</Dropdown.Item>
-                <Dropdown.Item>Google</Dropdown.Item>
-              </Dropdown.Menu>
-            </>
-          ) : (
-            <>
-              <Dropdown.Toggle variant='light'>
-                <Image
-                  src={user.picture.data.url}
-                  alt={user.name}
-                  width='30'
-                  h='30'
-                  roundedCircle
-                  className='mr-2'
-                />
-                {user.name}
-              </Dropdown.Toggle>
-              <Dropdown.Menu
-                className={classNames(styles.dropdown, 'dropdown-menu-right')}
-              >
-                <Dropdown.Item onClick={logout}>Log out</Dropdown.Item>
-              </Dropdown.Menu>
-            </>
-          )}
-        </Dropdown>
+        <Button onClick={login}>Login</Button>
       </Navbar.Collapse>
     </Navbar>
   );
