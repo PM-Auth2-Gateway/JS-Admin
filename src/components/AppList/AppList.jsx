@@ -1,54 +1,32 @@
-import classNames from 'classnames';
-import { useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { Col, Container, ListGroup, Row, Spinner } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { ListGroup, Spinner } from 'react-bootstrap';
 
 import styles from './AppList.module.scss';
-import selector from './AppList.selector';
 
 import AppPreview from '../AppPreview/AppPreview';
-import CreateAppModal from '../CreateAppModal/CreateAppModal';
 
-import { clearAllApps, loadAllApps } from '../../ducks/apps/all';
+const propTypes = {
+  list: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.object,
+};
 
-const AppList = () => {
-  const dispatch = useDispatch();
-  const { url } = useRouteMatch();
+const AppList = (props) => {
+  const { list, loading } = props;
 
-  const { all, loading } = useSelector(selector);
-
-  useEffect(() => {
-    dispatch(loadAllApps());
-
-    return () => {
-      dispatch(clearAllApps());
-    };
-  }, [dispatch]);
-
-  return (
-    <Container>
-      <Row className={classNames('mb-5', 'align-items-center')}>
-        <Col>
-          <h2>Applications</h2>
-        </Col>
-        <Col xs='auto'>
-          <CreateAppModal />
-        </Col>
-      </Row>
-      {loading ? (
-        <Spinner animation='border' />
-      ) : (
-        <ListGroup variant={'flush'}>
-          {all.map((app) => (
-            <ListGroup.Item key={app.id} className={styles.listItem}>
-              <AppPreview url={`${url}/${app.id}`} name={app.name} />
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      )}
-    </Container>
+  return loading ? (
+    <Spinner animation='border' />
+  ) : (
+    <ListGroup variant={'flush'}>
+      {list.map(({ id, name }) => (
+        <ListGroup.Item key={id} className={styles.listItem}>
+          <AppPreview url={`applications/${id}`} name={name} />
+        </ListGroup.Item>
+      ))}
+    </ListGroup>
   );
 };
+
+AppList.propTypes = propTypes;
 
 export default AppList;

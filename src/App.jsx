@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import AppsList from './components/AppList/AppList';
-import AppInfo from './components/AppInfo/AppInfo';
-import SocialInfo from './components/SocialInfo/SocialInfo';
-import Navigation from './components/Navigation/Navigation';
-
 import styles from './App.module.scss';
+
+import Navigation from './components/Navigation/Navigation';
+import ApplicationsPage from './pages/ApplicationsPage/ApplicationsPage';
+import SingleSocialPage from './pages/SingleSocialPage/SingleSocialPage';
+import SingleApplicationPage from './pages/SingleApplicationPage/SingleApplicationPage';
 
 function App() {
   return (
@@ -17,13 +17,13 @@ function App() {
       <div className={styles.container}>
         <Switch>
           <Route exact path='/applications'>
-            <AppsList />
+            <ApplicationsPage />
           </Route>
           <Route exact path='/applications/:appId'>
-            <AppInfo />
+            <SingleApplicationPage />
           </Route>
-          <Route path='/applications/:appId/social/:socialId'>
-            <SocialInfo />
+          <Route path='/applications/:appId/socials/:socialId'>
+            <SingleSocialPage />
           </Route>
         </Switch>
       </div>

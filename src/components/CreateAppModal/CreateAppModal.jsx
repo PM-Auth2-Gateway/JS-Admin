@@ -1,10 +1,8 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Formik, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { Button, Modal, Form } from 'react-bootstrap';
-
-import { addApp } from '../../ducks/apps/all';
 
 const AppSchema = Yup.object().shape({
   name: Yup.string()
@@ -13,9 +11,11 @@ const AppSchema = Yup.object().shape({
     .required('Name is required'),
 });
 
-const CreateAppModal = () => {
-  const dispatch = useDispatch();
+const propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
+const CreateAppModal = (props) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -26,7 +26,7 @@ const CreateAppModal = () => {
   };
 
   const onSubmit = (values) => {
-    dispatch(addApp(values.name));
+    props.onSubmit(values);
     handleClose();
   };
 
@@ -93,5 +93,7 @@ const CreateAppModal = () => {
     </React.Fragment>
   );
 };
+
+CreateAppModal.propTypes = propTypes;
 
 export default CreateAppModal;
