@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { Button, Modal, Form } from 'react-bootstrap';
 
@@ -42,14 +42,7 @@ const CreateAppModal = () => {
           validationSchema={AppSchema}
           onSubmit={onSubmit}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleSubmit,
-            handleChange,
-            handleBlur,
-          }) => (
+          {({ errors, touched, handleSubmit }) => (
             <Form>
               <Modal.Header closeButton>
                 <Modal.Title>Create Application</Modal.Title>
@@ -58,13 +51,11 @@ const CreateAppModal = () => {
                 <Form.Group>
                   <Form.Label>Name</Form.Label>
                   <Form.Control
+                    as={Field}
                     name='name'
                     type='text'
                     placeholder='Enter name of app'
                     isInvalid={errors.name && touched.name}
-                    value={values.name}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
                   />
                   {errors.name && touched.name ? (
                     <Form.Control.Feedback type='invalid'>

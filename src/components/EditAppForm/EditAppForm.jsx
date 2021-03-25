@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
 
@@ -20,25 +20,16 @@ const EditAppForm = ({ initialValues, onEdit }) => {
       validationSchema={AppSchema}
       onSubmit={onSubmit}
     >
-      {({
-        values,
-        errors,
-        touched,
-        handleSubmit,
-        handleChange,
-        handleBlur,
-      }) => (
+      {({ errors, touched, handleSubmit }) => (
         <Form>
           <Form.Group>
             <Form.Label>Name</Form.Label>
             <Form.Control
+              as={Field}
               name='name'
               type='text'
               placeholder='Enter name of app'
               isInvalid={errors.name && touched.name}
-              value={values.name}
-              onChange={handleChange}
-              onBlur={handleBlur}
             />
             {errors.name && touched.name ? (
               <Form.Control.Feedback type='invalid'>
@@ -48,12 +39,7 @@ const EditAppForm = ({ initialValues, onEdit }) => {
           </Form.Group>
           <Form.Group>
             <Form.Label>App ID</Form.Label>
-            <Form.Control
-              name='id'
-              type='text'
-              readOnly
-              defaultValue={values.id}
-            />
+            <Form.Control as={Field} name='id' type='text' readOnly />
           </Form.Group>
 
           <Button variant={'info'} onClick={handleSubmit}>
