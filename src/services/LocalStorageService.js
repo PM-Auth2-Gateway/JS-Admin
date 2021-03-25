@@ -14,4 +14,8 @@ export default class LocalStorageService {
   static setUser(user) {
     localStorage.setItem('user', JSON.stringify(user));
   }
+
+  static clear() {
+    localStorage.clear();
+  }
 }

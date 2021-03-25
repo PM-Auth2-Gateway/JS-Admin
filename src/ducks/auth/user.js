@@ -4,10 +4,15 @@ import LocalStorageService from './../../services/LocalStorageService';
 const SET_USER = 'auth/user/set';
 const SET_LOADING = 'auth/user/loading/set';
 const SET_AUTHENTICATED = 'auth/user/authenticated/set';
+const CLEAR = 'auth/user/clear';
 
 const setLoading = (payload) => ({
   type: SET_LOADING,
   payload,
+});
+
+const clear = () => ({
+  type: CLEAR,
 });
 
 export const setUser = (payload) => ({
@@ -28,6 +33,11 @@ export const login = (social_id) => async (dispatch) => {
   LocalStorageService.setUser(user);
   dispatch(setAuthenticated(true));
   dispatch(setLoading(false));
+};
+
+export const logout = () => (dispatch) => {
+  LocalStorageService.clear();
+  dispatch(clear());
 };
 
 const initialState = {
@@ -53,6 +63,8 @@ const reducer = (state = initialState, { payload, type }) => {
         ...state,
         authenticated: payload,
       };
+    case CLEAR:
+      return initialState;
     default:
       return state;
   }

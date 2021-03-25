@@ -3,7 +3,12 @@ import { Dropdown, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSocials } from '../../ducks/auth/socials';
 import { loginSelector } from './Login.selector';
-import { login, setAuthenticated, setUser } from './../../ducks/auth/user';
+import {
+  login,
+  logout,
+  setAuthenticated,
+  setUser,
+} from './../../ducks/auth/user';
 import LocalStorageService from './../../services/LocalStorageService';
 
 const LoginButton = () => {
@@ -18,19 +23,23 @@ const LoginButton = () => {
     }
   }, [dispatch]);
 
-  const handleClick = (id) => {
+  const handleLogin = (id) => {
     dispatch(login(id));
   };
 
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
-    <Dropdown>
+    <Dropdown className='mr-5'>
       {!authenticated && !user ? (
         <>
           <Dropdown.Toggle variant='primary'>Login</Dropdown.Toggle>
           <Dropdown.Menu>
             {socials &&
               socials.map((soc) => (
-                <Dropdown.Item key={soc.id} onClick={() => handleClick(soc.id)}>
+                <Dropdown.Item key={soc.id} onClick={() => handleLogin(soc.id)}>
                   {soc.name}
                 </Dropdown.Item>
               ))}
@@ -50,7 +59,7 @@ const LoginButton = () => {
             {user.firstName} {user.lastName}
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item>Logout</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown.Menu>
         </>
       )}
