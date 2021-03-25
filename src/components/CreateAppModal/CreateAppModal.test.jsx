@@ -1,4 +1,5 @@
 import React, { useState as useStateMock } from 'react';
+import { useDispatch } from 'react-redux';
 import { shallow } from 'enzyme';
 
 import CreateAppModal from './CreateAppModal';
@@ -8,10 +9,16 @@ jest.mock('react', () => ({
   useState: jest.fn(),
 }));
 
+jest.mock('react-redux', () => ({
+  useDispatch: jest.fn(),
+}));
+
 describe('CreateAppModal Component', () => {
   const setState = jest.fn();
+  const dispatch = jest.fn();
 
   beforeEach(() => {
+    useDispatch.mockReturnValue(dispatch);
     useStateMock.mockImplementation((init) => [init, setState]);
   });
 
@@ -27,21 +34,5 @@ describe('CreateAppModal Component', () => {
     const openModalBtn = component.find(`[data-test="open-modal"]`);
 
     openModalBtn.simulate('click');
-  });
-
-  it('should close modal', function () {
-    const component = shallow(<CreateAppModal />);
-
-    const closeModalBtn = component.find(`[data-test="close-modal"]`);
-
-    closeModalBtn.simulate('click');
-  });
-
-  it('should submit modal', function () {
-    const component = shallow(<CreateAppModal />);
-
-    const submitModalBtn = component.find(`[data-test="submit-modal"]`);
-
-    submitModalBtn.simulate('click');
   });
 });

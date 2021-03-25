@@ -1,35 +1,62 @@
-import React from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
-
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useRouteMatch, useParams, useHistory } from 'react-router-dom';
 import {
   Container,
   Row,
   Col,
-  FormGroup,
-  FormLabel,
-  FormControl,
-  Button,
   ListGroup,
   ListGroupItem,
   Card,
   Alert,
+  Spinner,
 } from 'react-bootstrap';
 
 import styles from './AppInfo.module.scss';
+import selector from './AppInfo.selector';
 
 import appIcon from '../../assets/app-icon.svg';
 import googleIcon from '../../assets/google-avatar.png';
 import facebookIcon from '../../assets/facebook-avatar.png';
+import DeleteAppModal from '../DeleteAppModal/DeleteAppModal';
+
+import {
+  deleteCurrentApp,
+  loadCurrentApp,
+  removeCurrentApp,
+  updateCurrentApp,
+} from '../../ducks/apps/current';
+import EditAppForm from '../EditAppForm/EditAppForm';
 
 const AppInfo = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const { url } = useRouteMatch();
+  const { appId } = useParams();
+  const { current, loading } = useSelector(selector);
+
+  useEffect(() => {
+    dispatch(loadCurrentApp(appId));
+
+    return () => {
+      dispatch(removeCurrentApp());
+    };
+  }, [dispatch, appId]);
+
+  const onEdit = (values) => {
+    dispatch(updateCurrentApp(values));
+  };
+
+  const onDelete = () => {
+    dispatch(deleteCurrentApp(appId)).then(history.push('/applications'));
+  };
 
   return (
     <Container>
       <div className={styles.appPreview}>
         <img src={appIcon} className={styles.appIcon} alt='icon' />
-        <h2>App name</h2>
-        {/*TODO from backend*/}
+        {loading ? <Spinner animation='border' /> : <h2>{current.name}</h2>}
       </div>
       <div className={styles.form}>
         <ListGroup variant={'flush'}>
@@ -39,21 +66,11 @@ const AppInfo = () => {
                 <h4>Basic Information</h4>
               </Col>
               <Col>
-                {/*TODO get from backend basic info*/}
-                <FormGroup>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl type={'text'} />
-                </FormGroup>
-                <FormGroup>
-                  <FormLabel>App ID</FormLabel>
-                  <FormControl
-                    type={'text'}
-                    readOnly
-                    defaultValue={'sadasdsadsad'}
-                  />
-                </FormGroup>
-
-                <Button variant={'info'}>Save Changes</Button>
+                {loading ? (
+                  <Spinner animation='border' />
+                ) : (
+                  <EditAppForm initialValues={current} onEdit={onEdit} />
+                )}
               </Col>
             </Row>
           </ListGroupItem>
@@ -113,7 +130,7 @@ const AppInfo = () => {
             <p>All your apps using this client will stop working.</p>
           </Col>
           <Col xs='auto' className={'align-self-center'}>
-            <Button variant={'danger'}>Delete</Button>
+            <DeleteAppModal onDelete={onDelete} />
           </Col>
         </Row>
       </Alert>

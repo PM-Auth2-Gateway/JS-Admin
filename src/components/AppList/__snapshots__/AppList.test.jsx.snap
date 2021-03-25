@@ -26,9 +26,10 @@ exports[`AppList Component should render AppList Component 1`] = `
       active={false}
       className="listItem"
       disabled={false}
+      key="1"
     >
       <AppPreview
-        name="asd"
+        name="Test1"
         url="/applications//1"
       />
     </ListGroupItem>
@@ -36,9 +37,10 @@ exports[`AppList Component should render AppList Component 1`] = `
       active={false}
       className="listItem"
       disabled={false}
+      key="2"
     >
       <AppPreview
-        name="asdasfdgfh"
+        name="Test2"
         url="/applications//2"
       />
     </ListGroupItem>
