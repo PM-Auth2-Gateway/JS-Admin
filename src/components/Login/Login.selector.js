@@ -1,5 +1,5 @@
 import { createSelector, createStructuredSelector } from 'reselect';
-const socialsState = (state) => state.socials;
+const socialsState = (state) => state.socialsList;
 const userState = (state) => state.user;
 
 const socialsSelector = createSelector(socialsState, ({ socials }) => socials);
