@@ -1,70 +1,41 @@
-import axios from 'axios';
-import config from '../config';
+import { instance } from '../axiosConfig';
 
 export default class AppsApiService {
-  static get(authToken) {
+  static get() {
     const url = AppsApiService.#buildUrl();
 
-    return axios.get(url, {
-      headers: {
-        Authentication: authToken,
-      },
+    return instance.get(url);
+  }
+
+  static getById(id) {
+    const url = AppsApiService.#buildUrl();
+
+    return instance.get(url + `/${id}`);
+  }
+
+  static updateById(id, { name }) {
+    const url = AppsApiService.#buildUrl();
+
+    return instance.put(url + `/${id}`, {
+      name,
     });
   }
 
-  static getById(authToken, { id }) {
+  static deleteById(id) {
     const url = AppsApiService.#buildUrl();
 
-    return axios.get(url.href + `/${id}`, {
-      headers: {
-        Authentication: authToken,
-      },
+    return instance.delete(url + `/${id}`);
+  }
+
+  static post({ name }) {
+    const url = AppsApiService.#buildUrl();
+
+    return instance.post(url, {
+      name,
     });
-  }
-
-  static updateById(authToken, { id, name }) {
-    const url = AppsApiService.#buildUrl();
-
-    return axios.put(
-      url.href + `/${id}`,
-      {
-        name,
-      },
-      {
-        headers: {
-          Authentication: authToken,
-        },
-      }
-    );
-  }
-
-  static deleteById(authToken, { id }) {
-    const url = AppsApiService.#buildUrl();
-
-    return axios.delete(url.href + `/${id}`, {
-      headers: {
-        Authentication: authToken,
-      },
-    });
-  }
-
-  static post(authToken, { name }) {
-    const url = AppsApiService.#buildUrl();
-
-    return axios.post(
-      url,
-      {
-        name,
-      },
-      {
-        headers: {
-          Authentication: authToken,
-        },
-      }
-    );
   }
 
   static #buildUrl = () => {
-    return new URL('/Admin/applications', config.API_ENDPOINT);
+    return '/Admin/applications';
   };
 }

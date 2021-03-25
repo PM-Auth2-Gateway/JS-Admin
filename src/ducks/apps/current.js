@@ -1,4 +1,3 @@
-import config from '../../config';
 import AppsApiService from '../../services/AppsApiService';
 
 const SET_CURRENT = 'apps/current/set';
@@ -12,7 +11,7 @@ const SET_ERROR = 'apps/current/error/set';
 export const loadCurrentApp = (id) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const res = await AppsApiService.getById(config.authToken, { id });
+    const res = await AppsApiService.getById(id);
 
     dispatch(setCurrent(res.data));
     dispatch(setError(null));
@@ -26,7 +25,9 @@ export const loadCurrentApp = (id) => async (dispatch) => {
 export const updateCurrentApp = (data) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const res = await AppsApiService.updateById(config.authToken, data);
+    const res = await AppsApiService.updateById(data.id, {
+      name: data.name,
+    });
 
     dispatch(updateCurrent(res.data));
     dispatch(setError(null));
@@ -40,7 +41,7 @@ export const updateCurrentApp = (data) => async (dispatch) => {
 export const deleteCurrentApp = (id) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    await AppsApiService.deleteById(config.authToken, { id });
+    await AppsApiService.deleteById(id);
 
     dispatch(deleteCurrent());
     dispatch(setError(null));
