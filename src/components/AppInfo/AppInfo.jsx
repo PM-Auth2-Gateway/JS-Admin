@@ -48,8 +48,9 @@ const AppInfo = () => {
     dispatch(updateCurrentApp(values));
   };
 
-  const onDelete = () => {
-    dispatch(deleteCurrentApp(appId)).then(history.push('/applications'));
+  const onDelete = async () => {
+    await dispatch(deleteCurrentApp(appId));
+    history.push('/applications');
   };
 
   return (
