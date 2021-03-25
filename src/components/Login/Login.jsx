@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import classNames from 'classnames';
 import { Dropdown, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSocials } from '../../ducks/auth/socials';
@@ -10,6 +11,8 @@ import {
   setUser,
 } from './../../ducks/auth/user';
 import LocalStorageService from './../../services/LocalStorageService';
+
+import styles from './Login.module.scss';
 
 const LoginButton = () => {
   const dispatch = useDispatch();
@@ -36,7 +39,9 @@ const LoginButton = () => {
       {!authenticated && !user ? (
         <>
           <Dropdown.Toggle variant='primary'>Login</Dropdown.Toggle>
-          <Dropdown.Menu>
+          <Dropdown.Menu
+            className={classNames(styles.dropdown, 'dropdown-menu-right')}
+          >
             {socials &&
               socials.map((soc) => (
                 <Dropdown.Item key={soc.id} onClick={() => handleLogin(soc.id)}>
@@ -58,7 +63,9 @@ const LoginButton = () => {
             />
             {user.firstName} {user.lastName}
           </Dropdown.Toggle>
-          <Dropdown.Menu>
+          <Dropdown.Menu
+            className={classNames(styles.dropdown, 'dropdown-menu-right')}
+          >
             <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown.Menu>
         </>
