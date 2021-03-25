@@ -1,17 +1,16 @@
-import AppsApiService from '../../services/AppsApiService';
+import SocialsApiService from '../../services/SocialsApiService';
 
-const SET_CURRENT = 'apps/current/set';
-const UPDATE_CURRENT = 'app/current/update';
-const DELETE_CURRENT = 'apps/current/delete';
-const REMOVE_CURRENT = 'apps/current/remove';
+const SET_CURRENT = 'socials/current/set';
+const UPDATE_CURRENT = 'socials/current/update';
+const REMOVE_CURRENT = 'socials/current/remove';
 
-const SET_LOADING = 'apps/current/loading/set';
-const SET_ERROR = 'apps/current/error/set';
+const SET_LOADING = 'socials/current/loading/set';
+const SET_ERROR = 'socials/current/error/set';
 
-export const loadCurrentApp = (id) => async (dispatch) => {
+export const loadCurrentSocial = (appId, id) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const res = await AppsApiService.getById(id);
+    const res = await SocialsApiService.getById(appId, id);
 
     dispatch(setCurrent(res.data));
     dispatch(setError(null));
@@ -22,11 +21,17 @@ export const loadCurrentApp = (id) => async (dispatch) => {
   }
 };
 
-export const updateCurrentApp = (id, { name }) => async (dispatch) => {
+export const updateCurrentSocial = (
+  appId,
+  id,
+  { client_id, scope, secret_key }
+) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const res = await AppsApiService.updateById(id, {
-      name,
+    const res = await SocialsApiService.updateById(appId, id, {
+      client_id,
+      scope,
+      secret_key,
     });
 
     dispatch(updateCurrent(res.data));
@@ -38,21 +43,7 @@ export const updateCurrentApp = (id, { name }) => async (dispatch) => {
   }
 };
 
-export const deleteCurrentApp = (id) => async (dispatch) => {
-  try {
-    dispatch(setLoading(true));
-    await AppsApiService.deleteById(id);
-
-    dispatch(deleteCurrent());
-    dispatch(setError(null));
-  } catch (error) {
-    dispatch(setError(error));
-  } finally {
-    dispatch(setLoading(false));
-  }
-};
-
-export const removeCurrentApp = () => (dispatch) => {
+export const removeCurrentSocial = () => (dispatch) => {
   dispatch(removeCurrent());
 };
 
@@ -64,11 +55,6 @@ const setCurrent = (app) => ({
 const updateCurrent = (data) => ({
   type: UPDATE_CURRENT,
   payload: data,
-});
-
-const deleteCurrent = (id) => ({
-  type: DELETE_CURRENT,
-  payload: id,
 });
 
 const removeCurrent = () => ({
@@ -102,11 +88,6 @@ export const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         value: action.payload,
-      };
-    case DELETE_CURRENT:
-      return {
-        ...state,
-        value: {},
       };
     case REMOVE_CURRENT:
       return {

@@ -2,12 +2,12 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { reducer as appsAllReducer } from '../ducks/apps/all';
-import { reducer as appsCurrentReducer } from '../ducks/apps/current';
+import { reducer as appsReducer } from '../ducks/apps/index';
+import { reducer as socialsReducer } from '../ducks/socials/index';
 
 const rootReducer = combineReducers({
-  appsAll: appsAllReducer,
-  appsCurrent: appsCurrentReducer,
+  apps: appsReducer,
+  socials: socialsReducer,
 });
 
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware));
