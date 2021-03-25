@@ -7,7 +7,9 @@ export const instance = axios.create({
 
 instance.interceptors.request.use((config) => {
   if (LocalStorageService.getToken()) {
-    config.headers['Authorization'] = LocalStorageService.getToken();
+    config.headers[
+      'Authorization'
+    ] = `Bearer ${LocalStorageService.getToken()}`;
   }
   return config;
 });
