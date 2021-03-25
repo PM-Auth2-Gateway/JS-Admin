@@ -1,27 +1,29 @@
 import { instance } from '../axiosConfig';
 
 export default class SocialsApiService {
-  static get() {
-    const url = SocialsApiService.#buildUrl();
+  static get(appId) {
+    const url = SocialsApiService.#buildUrl(appId);
 
     return instance.get(url);
   }
 
-  static getById(id) {
-    const url = SocialsApiService.#buildUrl();
+  static getById(appId, id) {
+    const url = SocialsApiService.#buildUrl(appId);
 
     return instance.get(url + `/${id}`);
   }
 
-  static post({ name }) {
-    const url = SocialsApiService.#buildUrl();
+  static updateById(appId, id, { client_id, scope, secret_key }) {
+    const url = SocialsApiService.#buildUrl(appId);
 
-    return instance.post(url, {
-      name,
+    return instance.post(url + `/${id}`, {
+      client_id,
+      scope,
+      secret_key,
     });
   }
 
-  static #buildUrl = () => {
-    return new URL('/Admin/socials');
+  static #buildUrl = (appId) => {
+    return `/Admin/applications/${appId}/socials`;
   };
 }
