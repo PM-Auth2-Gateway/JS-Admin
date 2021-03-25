@@ -21,7 +21,7 @@ export const loadAllApps = () => async (dispatch) => {
   }
 };
 
-export const addApp = (name) => async (dispatch) => {
+export const addApp = ({ name }) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
     const res = await AppsApiService.post({ name });
