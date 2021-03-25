@@ -1,16 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Image, Nav, Navbar, Button } from 'react-bootstrap';
+import { Image, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import LoginButton from './../LoginButton/LoginButton';
 
 import styles from './Navigation.module.scss';
-import LoginApiService from './../../services/LoginApiService';
 
 const Navigation = () => {
-  const login = () => {
-    LoginApiService.login();
-  };
-
   return (
     <Navbar collapseOnSelect expand='md' className={styles.border}>
       <NavLink to='/'>
@@ -42,7 +38,7 @@ const Navigation = () => {
             Docs
           </Nav.Link>
         </Nav>
-        <Button onClick={login}>Login</Button>
+        <LoginButton />
       </Navbar.Collapse>
     </Navbar>
   );

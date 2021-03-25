@@ -127,14 +127,7 @@ exports[`Navigation component should be rendered 1`] = `
         Docs
       </NavLink>
     </Nav>
-    <Button
-      active={false}
-      disabled={false}
-      onClick={[Function]}
-      variant="primary"
-    >
-      Login
-    </Button>
+    <LoginButton />
   </NavbarCollapse>
 </Navbar>
 `;
