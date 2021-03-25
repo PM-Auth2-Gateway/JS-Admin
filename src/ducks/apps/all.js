@@ -1,4 +1,3 @@
-import config from '../../config';
 import AppsApiService from '../../services/AppsApiService';
 
 const LOAD_ALL = 'apps/all/load';
@@ -11,7 +10,7 @@ const SET_ERROR = 'apps/all/error/set';
 export const loadAllApps = () => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const res = await AppsApiService.get(config.authToken);
+    const res = await AppsApiService.get();
 
     dispatch(loadAll(res.data));
     dispatch(setError(null));
@@ -25,7 +24,7 @@ export const loadAllApps = () => async (dispatch) => {
 export const addApp = (name) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const res = await AppsApiService.post(config.authToken, { name });
+    const res = await AppsApiService.post({ name });
 
     dispatch(addAll(res.data));
     dispatch(setError(null));

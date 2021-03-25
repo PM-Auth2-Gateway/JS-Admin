@@ -1,44 +1,27 @@
-import axios from 'axios';
-import config from '../config';
+import { instance } from '../axiosConfig';
 
 export default class SocialsApiService {
-  static get(authToken) {
+  static get() {
     const url = SocialsApiService.#buildUrl();
 
-    return axios.get(url, {
-      headers: {
-        Authentication: authToken,
-      },
-    });
+    return instance.get(url);
   }
 
-  static getById(authToken, { id }) {
+  static getById(id) {
     const url = SocialsApiService.#buildUrl();
 
-    return axios.get(url.href + `/${id}`, {
-      headers: {
-        Authentication: authToken,
-      },
-    });
+    return instance.get(url + `/${id}`);
   }
 
-  static post(authToken, { name }) {
+  static post({ name }) {
     const url = SocialsApiService.#buildUrl();
 
-    return axios.post(
-      url,
-      {
-        name,
-      },
-      {
-        headers: {
-          Authentication: authToken,
-        },
-      }
-    );
+    return instance.post(url, {
+      name,
+    });
   }
 
   static #buildUrl = () => {
-    return new URL('/Admin/socials', config.API_ENDPOINT);
+    return new URL('/Admin/socials');
   };
 }
