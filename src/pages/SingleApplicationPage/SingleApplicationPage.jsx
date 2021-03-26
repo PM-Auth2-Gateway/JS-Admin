@@ -79,7 +79,7 @@ const SingleApplicationPage = () => {
           </Col>
         </Row>
         <Row className='mb-4'>
-          <Col className={styles.form}>
+          <Col>
             <AppDelete onDelete={onDelete} />
           </Col>
         </Row>

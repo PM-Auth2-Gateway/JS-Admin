@@ -1,8 +1,16 @@
+@import '../../styles/Scroll.mixin.scss';
+
 .appPreview {
   display: flex;
   align-items: center;
   gap: 24px;
-  margin-bottom: 48px;
+
+  overflow-x: auto;
+
+  padding-bottom: 3px;
+  margin-bottom: 40px;
+
+  @include scroll-bar(5px);
 
   .appIcon {
     width: 64px;
