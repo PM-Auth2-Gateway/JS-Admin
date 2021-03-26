@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component should render 1`] = `
+<Dropdown
+  className="mr-5"
+  navbar={false}
+>
+  <DropdownToggle
+    className="d-flex align-items-center"
+    variant="primary"
+  >
+    Login with
+  </DropdownToggle>
+  <DropdownMenu
+    align="left"
+    alignRight={false}
+    className="dropdown dropdown-menu-right"
+    flip={true}
+  >
+    <DropdownItem
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        }
+      }
+      disabled={false}
+      key="1"
+      onClick={[Function]}
+    >
+      test
+    </DropdownItem>
+  </DropdownMenu>
+</Dropdown>
+`;
+
+exports[`Login component should render user data if user authenticated 1`] = `
+<Dropdown
+  className="mr-5"
+  navbar={false}
+>
+  <DropdownToggle
+    className="d-flex align-items-center"
+    variant="light"
+  >
+    <Image
+      alt="first"
+      className="mr-1"
+      fluid={false}
+      h="30"
+      referrerPolicy="no-referrer"
+      rounded={false}
+      roundedCircle={true}
+      src="test.png"
+      thumbnail={false}
+      width="30"
+    />
+    first
+     
+    last
+  </DropdownToggle>
+  <DropdownMenu
+    align="left"
+    alignRight={false}
+    className="dropdown dropdown-menu-right"
+    flip={true}
+  >
+    <DropdownItem
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        }
+      }
+      disabled={false}
+      onClick={[Function]}
+    >
+      Logout
+    </DropdownItem>
+  </DropdownMenu>
+</Dropdown>
+`;

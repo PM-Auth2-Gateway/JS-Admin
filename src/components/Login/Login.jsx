@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { useEffect } from 'react';
 import { Dropdown, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { getSocials } from '../../ducks/auth/socials';
 import {
   login,
@@ -84,6 +84,7 @@ const Login = () => {
               h='30'
               roundedCircle
               className='mr-1'
+              referrerPolicy='no-referrer'
             />
             {user.firstName} {user.lastName}
           </Dropdown.Toggle>
