@@ -13,10 +13,11 @@ import { useAppContext } from '../../contexts/App.context';
 
 import emptySocial from '../../data/empty_social.json';
 import selector from './SocialModal.selector';
+import { loadAllSocials } from '../../ducks/socials/all';
 
 const SocialSchema = Yup.object().shape({
-  clientId: Yup.string().required('Client ID is required'),
-  secretKey: Yup.string().required('Secret key is required'),
+  client_id: Yup.string().required('Client ID is required'),
+  secret_key: Yup.string().required('Secret key is required'),
   scope: Yup.string().required('Scope is required'),
 });
 
@@ -34,22 +35,23 @@ const SocialModal = (props) => {
   const initialValues = props.mode === 'update' ? social.current : emptySocial;
 
   useEffect(() => {
-    if (props.mode === 'update') dispatch(loadCurrentSocial(appId, props.id));
+    if (props.mode === 'update' && show)
+      dispatch(loadCurrentSocial(appId, props.id));
 
     return () => {};
-  }, [dispatch, appId, props.id, props.mode]);
+  }, [dispatch, appId, props.id, props.mode, show]);
 
-  const create = (values) => {
-    dispatch(createCurrentSocial(appId, props.id, values));
+  const create = async (values) => {
+    await dispatch(createCurrentSocial(appId, props.id, values));
   };
 
-  const update = (values) => {
-    dispatch(updateCurrentSocial(appId, props.id, values));
+  const update = async (values) => {
+    await dispatch(updateCurrentSocial(appId, props.id, values));
   };
 
-  const onSubmit = (values) => {
-    console.log(values);
-    props.mode === 'update' ? update(values) : create(values);
+  const onSubmit = async (values) => {
+    (await props.mode) === 'update' ? update(values) : create(values);
+    await dispatch(loadAllSocials(appId));
 
     handleClose();
   };
@@ -78,14 +80,14 @@ const SocialModal = (props) => {
                   <Form.Label>Client ID</Form.Label>
                   <Form.Control
                     as={Field}
-                    name='clientId'
+                    name='client_id'
                     type='text'
                     placeholder='Enter client ID of app'
-                    isInvalid={errors.clientId && touched.clientId}
+                    isInvalid={errors.client_id && touched.client_id}
                   />
-                  {errors.clientId && touched.clientId ? (
+                  {errors.client_id && touched.client_id ? (
                     <Form.Control.Feedback type='invalid'>
-                      <ErrorMessage name='clientId' />
+                      <ErrorMessage name='client_id' />
                     </Form.Control.Feedback>
                   ) : null}
                 </Form.Group>
@@ -93,14 +95,14 @@ const SocialModal = (props) => {
                   <Form.Label>Client Secret</Form.Label>
                   <Form.Control
                     as={Field}
-                    name='secretKey'
+                    name='secret_key'
                     type='text'
                     placeholder='Enter secret key of app'
-                    isInvalid={errors.secretKey && touched.secretKey}
+                    isInvalid={errors.secret_key && touched.secret_key}
                   />
-                  {errors.secretKey && touched.secretKey ? (
+                  {errors.secret_key && touched.secret_key ? (
                     <Form.Control.Feedback type='invalid'>
-                      <ErrorMessage name='secretKey' />
+                      <ErrorMessage name='secret_key' />
                     </Form.Control.Feedback>
                   ) : null}
                 </Form.Group>

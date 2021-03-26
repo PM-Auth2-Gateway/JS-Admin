@@ -7,8 +7,14 @@ const SocialsList = ({ list, loading, error }) => {
     <Spinner animation='border' />
   ) : (
     <>
-      {list.map(({ id, name, imgUrl }) => (
-        <SocialPreview key={id} id={id} name={name} img={imgUrl} />
+      {list.map(({ id, name, imgUrl, isSetting }) => (
+        <SocialPreview
+          key={id}
+          id={id}
+          name={name}
+          isSetting={isSetting}
+          img={imgUrl}
+        />
       ))}
     </>
   );

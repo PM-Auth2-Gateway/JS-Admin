@@ -58,7 +58,7 @@ export const reducer = (state = initialState, action = {}) => {
     case LOAD_ALL:
       return {
         ...state,
-        value: [...state.value, ...action.payload],
+        value: action.payload,
       };
     case CLEAR_ALL:
       return {
