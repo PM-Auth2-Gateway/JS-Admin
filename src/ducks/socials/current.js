@@ -21,6 +21,28 @@ export const loadCurrentSocial = (appId, id) => async (dispatch) => {
   }
 };
 
+export const createCurrentSocial = (
+  appId,
+  id,
+  { client_id, scope, secret_key }
+) => async (dispatch) => {
+  try {
+    dispatch(setLoading(true));
+    const res = await SocialsApiService.postById(appId, id, {
+      client_id,
+      scope,
+      secret_key,
+    });
+
+    dispatch(updateCurrent(res.data));
+    dispatch(setError(null));
+  } catch (error) {
+    dispatch(setError(error));
+  } finally {
+    dispatch(setLoading(false));
+  }
+};
+
 export const updateCurrentSocial = (
   appId,
   id,

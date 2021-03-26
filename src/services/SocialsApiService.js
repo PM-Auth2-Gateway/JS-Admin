@@ -13,10 +13,20 @@ export default class SocialsApiService {
     return instance.get(url + `/${id}`);
   }
 
-  static updateById(appId, id, { client_id, scope, secret_key }) {
+  static postById(appId, id, { client_id, scope, secret_key }) {
     const url = SocialsApiService.#buildUrl(appId);
 
     return instance.post(url + `/${id}`, {
+      client_id,
+      scope,
+      secret_key,
+    });
+  }
+
+  static updateById(appId, id, { client_id, scope, secret_key }) {
+    const url = SocialsApiService.#buildUrl(appId);
+
+    return instance.put(url + `/${id}`, {
       client_id,
       scope,
       secret_key,
