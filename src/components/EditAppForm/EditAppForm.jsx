@@ -42,7 +42,7 @@ const EditAppForm = ({ initialValues, onEdit }) => {
             <Form.Control as={Field} name='id' type='text' readOnly />
           </Form.Group>
 
-          <Button variant={'info'} onClick={handleSubmit}>
+          <Button type='button' variant={'info'} onClick={handleSubmit}>
             Save Changes
           </Button>
         </Form>

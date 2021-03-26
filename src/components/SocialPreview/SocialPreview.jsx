@@ -9,15 +9,17 @@ const SocialPreview = ({ id, name, isSetting }) => {
     <Card className={styles.card}>
       <Card.Body>
         <Card.Title className={styles.socialPreview}>
-          <img className={styles.appIcon} alt='icon' />
-          <p>{name}</p>
+          <div className={styles.socialTitle}>
+            <img className={styles.appIcon} alt='icon' />
+            <p>{name}</p>
+          </div>
+          <Badge variant={isSetting ? 'success' : 'info'}>
+            {isSetting ? 'Active' : 'Disabled'}
+          </Badge>
         </Card.Title>
         <Card.Text className={'text-muted'}>
           Allow your users to login with their {name} Account
         </Card.Text>
-        <Badge variant={isSetting ? 'success' : 'info'}>
-          {isSetting ? 'Active' : 'Disabled'}
-        </Badge>
         <ButtonGroup>
           <SocialModal id={id} mode={isSetting ? 'update' : 'create'} />
           {isSetting && <DeleteSocialModal id={id} />}

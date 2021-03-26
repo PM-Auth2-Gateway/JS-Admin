@@ -1,24 +1,31 @@
-import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { ListGroup, Spinner } from 'react-bootstrap';
-
-import styles from './AppList.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearAllApps, loadAllApps } from '../../ducks/apps/all';
 
 import AppPreview from '../AppPreview/AppPreview';
 
-const propTypes = {
-  list: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.object,
-};
+import styles from './AppList.module.scss';
+import selector from './AppList.selector';
 
-const AppList = (props) => {
-  const { list, loading } = props;
+const AppList = () => {
+  const dispatch = useDispatch();
+
+  const { all, loading } = useSelector(selector);
+
+  useEffect(() => {
+    dispatch(loadAllApps());
+
+    return () => {
+      dispatch(clearAllApps());
+    };
+  }, [dispatch]);
 
   return loading ? (
     <Spinner animation='border' />
   ) : (
     <ListGroup variant={'flush'}>
-      {list.map(({ id, name }) => (
+      {all.map(({ id, name }) => (
         <ListGroup.Item key={id} className={styles.listItem}>
           <AppPreview url={`applications/${id}`} name={name} />
         </ListGroup.Item>
@@ -26,7 +33,5 @@ const AppList = (props) => {
     </ListGroup>
   );
 };
-
-AppList.propTypes = propTypes;
 
 export default AppList;

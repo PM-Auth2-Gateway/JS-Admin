@@ -15,8 +15,9 @@ import emptySocial from '../../data/empty_social.json';
 import selector from './SocialModal.selector';
 
 const SocialSchema = Yup.object().shape({
-  clientId: Yup.string().required('Name is required'),
-  secretKey: Yup.string().required('Name is required'),
+  clientId: Yup.string().required('Client ID is required'),
+  secretKey: Yup.string().required('Secret key is required'),
+  scope: Yup.string().required('Scope is required'),
 });
 
 const SocialModal = (props) => {
@@ -47,6 +48,7 @@ const SocialModal = (props) => {
   };
 
   const onSubmit = (values) => {
+    console.log(values);
     props.mode === 'update' ? update(values) : create(values);
 
     handleClose();
@@ -68,7 +70,7 @@ const SocialModal = (props) => {
             <Form>
               <Modal.Header closeButton>
                 <Modal.Title>
-                  {props.mode === 'create' ? 'Create' : 'Update'} Application
+                  {props.mode === 'create' ? 'Create' : 'Update'} Social
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
@@ -105,7 +107,8 @@ const SocialModal = (props) => {
                 <Form.Group>
                   <Form.Label>Scope</Form.Label>
                   <Form.Control
-                    as={'textarea'}
+                    as={Field}
+                    type='textarea'
                     name='scope'
                     placeholder='Enter scope of app'
                     isInvalid={errors.scope && touched.scope}
@@ -126,6 +129,7 @@ const SocialModal = (props) => {
               <Modal.Footer>
                 <Button
                   data-test={'close-modal'}
+                  type='button'
                   variant='outline-secondary'
                   onClick={handleClose}
                 >
@@ -133,8 +137,9 @@ const SocialModal = (props) => {
                 </Button>
                 <Button
                   data-test={'submit-modal'}
+                  type='button'
                   variant='primary'
-                  onClick={onSubmit}
+                  onClick={handleSubmit}
                 >
                   {props.mode === 'create' ? 'Create' : 'Update'}
                 </Button>

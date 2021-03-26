@@ -1,6 +1,10 @@
 .card {
   margin-bottom: 20px;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   a {
     text-decoration: none;
   }
@@ -8,7 +12,18 @@
   .socialPreview {
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
     gap: 16px;
+
+    .socialTitle {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      img {
+        margin-right: 8px;
+      }
+    }
 
     .appIcon {
       width: 32px;
