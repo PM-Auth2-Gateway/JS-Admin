@@ -13,3 +13,22 @@ instance.interceptors.request.use((config) => {
   }
   return config;
 });
+
+//BUG: Maybe not working due to backend issuses
+instance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    if (LocalStorageService.getToken()) {
+      const originalRequest = error.config;
+      if (error.response.status === 401) {
+        const { data } = await instance.post(
+          `Admin/refreshToken?${LocalStorageService.getToken()}`
+        );
+        LocalStorageService.setToken(data.token);
+        return instance(originalRequest);
+      }
+    }
+  }
+);
