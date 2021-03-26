@@ -41,7 +41,12 @@ const LoginButton = () => {
     <Dropdown className='mr-5'>
       {!authenticated && !user ? (
         <>
-          <Dropdown.Toggle variant='primary'>Login</Dropdown.Toggle>
+          <Dropdown.Toggle
+            variant='primary'
+            className={classNames('d-flex', 'align-items-center')}
+          >
+            Login
+          </Dropdown.Toggle>
           <Dropdown.Menu
             className={classNames(styles.dropdown, 'dropdown-menu-right')}
           >
@@ -55,7 +60,10 @@ const LoginButton = () => {
         </>
       ) : (
         <>
-          <Dropdown.Toggle variant='light'>
+          <Dropdown.Toggle
+            variant='light'
+            className={classNames('d-flex', 'align-items-center')}
+          >
             <Image
               src={user.photo}
               alt={user.firstName}
