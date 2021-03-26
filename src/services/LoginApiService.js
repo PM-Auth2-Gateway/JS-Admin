@@ -40,6 +40,7 @@ export default class LoginApiService {
       }
     );
     LocalStorageService.setToken(data.token);
+    LocalStorageService.setUser(data);
     return data;
   }
 
@@ -54,20 +55,5 @@ export default class LoginApiService {
     } = authLink;
 
     return `${auth_uri}?redirect_uri=${redirect_uri}&response_type=${response_type}&client_id=${client_id}&scope=${scope}&state=${state}`;
-  }
-
-  static async login(social_id) {
-    const link = await LoginApiService.getAuthLink(social_id);
-    const modal = window.open(
-      link,
-      'Auth',
-      'width=972,height=660,modal=yes,alwaysRaised=yes'
-    );
-
-    const interval = setInterval(() => {
-      if (modal.closed) {
-        clearInterval(interval);
-      }
-    }, 1000);
   }
 }

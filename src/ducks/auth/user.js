@@ -25,12 +25,10 @@ export const setAuthenticated = (payload) => ({
   payload,
 });
 
-export const login = (social_id) => async (dispatch) => {
+export const login = () => async (dispatch) => {
   dispatch(setLoading(true));
-  await LoginApiService.login(social_id);
   const user = await LoginApiService.getProfile();
   dispatch(setUser(user));
-  LocalStorageService.setUser(user);
   dispatch(setAuthenticated(true));
   dispatch(setLoading(false));
 };

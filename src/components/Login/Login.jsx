@@ -11,6 +11,7 @@ import {
   setUser,
 } from './../../ducks/auth/user';
 import LocalStorageService from './../../services/LocalStorageService';
+import LoginApiService from './../../services/LoginApiService';
 import { loginSelector } from './Login.selector';
 
 import styles from './Login.module.scss';
@@ -28,8 +29,20 @@ const LoginButton = () => {
     }
   }, [dispatch]);
 
-  const handleLogin = (id) => {
-    dispatch(login(id));
+  const handleLogin = async (id) => {
+    const link = await LoginApiService.getAuthLink(id);
+    const popup = window.open(
+      link,
+      'Auth',
+      'width=972,height=660,modal=yes,alwaysRaised=yes'
+    );
+
+    const interval = setInterval(() => {
+      if (popup.closed) {
+        clearInterval(interval);
+        dispatch(login(id));
+      }
+    }, 1000);
   };
 
   const handleLogout = () => {
@@ -45,7 +58,7 @@ const LoginButton = () => {
             variant='primary'
             className={classNames('d-flex', 'align-items-center')}
           >
-            Login
+            Login with
           </Dropdown.Toggle>
           <Dropdown.Menu
             className={classNames(styles.dropdown, 'dropdown-menu-right')}
