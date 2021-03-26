@@ -16,7 +16,7 @@ import { loginSelector } from './Login.selector';
 
 import styles from './Login.module.scss';
 
-const LoginButton = () => {
+const Login = () => {
   const dispatch = useDispatch();
   const { socials, authenticated, user } = useSelector(loginSelector);
   const history = useHistory();
@@ -98,4 +98,4 @@ const LoginButton = () => {
   );
 };
 
-export default LoginButton;
+export default Login;
