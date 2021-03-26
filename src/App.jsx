@@ -5,7 +5,6 @@ import styles from './App.module.scss';
 
 import Navigation from './components/Navigation/Navigation';
 import ApplicationsPage from './pages/ApplicationsPage/ApplicationsPage';
-import SingleSocialPage from './pages/SingleSocialPage/SingleSocialPage';
 import SingleApplicationPage from './pages/SingleApplicationPage/SingleApplicationPage';
 
 function App() {
@@ -21,9 +20,6 @@ function App() {
           </Route>
           <Route exact path='/applications/:appId'>
             <SingleApplicationPage />
-          </Route>
-          <Route path='/applications/:appId/socials/:socialId'>
-            <SingleSocialPage />
           </Route>
         </Switch>
       </div>
