@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Row, Col, Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
-import appIcon from '../../assets/app-icon.svg';
 import EditAppForm from '../EditAppForm/EditAppForm';
 
 import {
@@ -11,7 +10,6 @@ import {
   updateCurrentApp,
 } from '../../ducks/apps/current';
 
-import styles from './AppInfo.module.scss';
 import selector from './AppInfo.selector';
 import { useAppContext } from '../../contexts/App.context';
 
@@ -35,10 +33,6 @@ const AppInfo = () => {
 
   return (
     <>
-      <div className={styles.appPreview}>
-        <img src={appIcon} className={styles.appIcon} alt='icon' />
-        {loading ? <Spinner animation='border' /> : <h2>{current.name}</h2>}
-      </div>
       <Row>
         <Col>
           <h4>Basic Information</h4>
