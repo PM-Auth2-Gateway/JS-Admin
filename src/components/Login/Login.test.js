@@ -74,7 +74,7 @@ describe('Login component', () => {
   it('should call dispatch 3 time on first render if user and token present in localstorage', () => {
     LocalStorageService.getToken.mockReturnValue('token');
     mount(<Login />);
-    expect(dispatch).toBeCalledTimes(3);
+    expect(dispatch).toBeCalledTimes(2);
   });
 
   it('should fetch authLink on social click', () => {

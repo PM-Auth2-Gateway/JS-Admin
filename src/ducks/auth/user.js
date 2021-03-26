@@ -5,6 +5,12 @@ const SET_USER = 'auth/user/set';
 const SET_LOADING = 'auth/user/loading/set';
 const SET_AUTHENTICATED = 'auth/user/authenticated/set';
 const CLEAR = 'auth/user/clear';
+const ERROR = 'auth/user/error/set';
+
+const setError = (payload) => ({
+  type: ERROR,
+  payload,
+});
 
 const setLoading = (payload) => ({
   type: SET_LOADING,
@@ -26,11 +32,19 @@ export const setAuthenticated = (payload) => ({
 });
 
 export const login = () => async (dispatch) => {
-  dispatch(setLoading(true));
-  const user = await LoginApiService.getProfile();
-  dispatch(setUser(user));
-  dispatch(setAuthenticated(true));
-  dispatch(setLoading(false));
+  try {
+    dispatch(setLoading(true));
+    const { data } = await LoginApiService.getProfile();
+    LocalStorageService.setToken(data.token);
+    LocalStorageService.setUser(data);
+    dispatch(setUser(data));
+    dispatch(setAuthenticated(true));
+    dispatch(setLoading(false));
+  } catch (e) {
+    dispatch(setError(e));
+  } finally {
+    dispatch(setLoading(false));
+  }
 };
 
 export const logout = () => (dispatch) => {
@@ -42,6 +56,7 @@ const initialState = {
   user: null,
   authenticated: false,
   isLoading: false,
+  error: false,
 };
 
 const reducer = (state = initialState, { payload, type }) => {
@@ -54,6 +69,7 @@ const reducer = (state = initialState, { payload, type }) => {
     case SET_LOADING:
       return {
         ...state,
+        error: false,
         isLoading: payload,
       };
     case SET_AUTHENTICATED:
@@ -63,6 +79,11 @@ const reducer = (state = initialState, { payload, type }) => {
       };
     case CLEAR:
       return initialState;
+    case ERROR:
+      return {
+        ...state,
+        error: payload,
+      };
     default:
       return state;
   }

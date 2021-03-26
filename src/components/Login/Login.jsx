@@ -22,12 +22,13 @@ const Login = () => {
   const history = useHistory();
 
   useEffect(() => {
-    dispatch(getSocials());
     if (LocalStorageService.getToken()) {
       dispatch(setAuthenticated(true));
       dispatch(setUser(LocalStorageService.getUser()));
+    } else {
+      dispatch(getSocials());
     }
-  }, [dispatch]);
+  }, [dispatch, authenticated]);
 
   const handleLogin = async (id) => {
     const link = await LoginApiService.getAuthLink(id);

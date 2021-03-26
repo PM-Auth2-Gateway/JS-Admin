@@ -1,5 +1,4 @@
 import { instance } from '../axiosConfig';
-import LocalStorageService from './LocalStorageService';
 
 export default class LoginApiService {
   static app_id = 1;
@@ -28,12 +27,9 @@ export default class LoginApiService {
   }
 
   static async getProfile() {
-    const data = await instance.post('Admin/tokenAndProfile', {
+    return instance.post('Admin/tokenAndProfile', {
       session_id: LoginApiService.session_id,
     });
-    LocalStorageService.setToken(data.data.token);
-    LocalStorageService.setUser(data.data);
-    return data.data;
   }
 
   static buildUrl(authLink) {
