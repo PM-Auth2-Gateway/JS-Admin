@@ -28,20 +28,12 @@ export default class LoginApiService {
   }
 
   static async getProfile() {
-    const { data } = await instance.post(
-      'Admin/tokenAndProfile',
-      {
-        session_id: LoginApiService.session_id,
-      },
-      {
-        headers: {
-          App_id: LoginApiService.app_id,
-        },
-      }
-    );
-    LocalStorageService.setToken(data.token);
-    LocalStorageService.setUser(data);
-    return data;
+    const data = await instance.post('Admin/tokenAndProfile', {
+      session_id: LoginApiService.session_id,
+    });
+    LocalStorageService.setToken(data.data.token);
+    LocalStorageService.setUser(data.data);
+    return data.data;
   }
 
   static buildUrl(authLink) {
