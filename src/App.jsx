@@ -16,7 +16,6 @@ function App() {
       'https://net-api-hbyuu.ondigitalocean.app/Admin/refreshToken',
       {},
       {
-        withCredentials: true,
         headers: {
           token: LocalStorageService.getToken(),
         },
