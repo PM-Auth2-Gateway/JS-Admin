@@ -20,9 +20,9 @@ instance.interceptors.response.use(
     return response;
   },
   async (error) => {
-    if (LocalStorageService.getToken()) {
-      const originalRequest = error.config;
-      if (error.response.status === 401) {
+    const originalRequest = error.config;
+    if (error.response.status === 401) {
+      if (LocalStorageService.getToken()) {
         const { data } = await instance.post(
           `Admin/refreshToken?${LocalStorageService.getToken()}`
         );
@@ -30,5 +30,6 @@ instance.interceptors.response.use(
         return instance(originalRequest);
       }
     }
+    return Promise.reject(error);
   }
 );
