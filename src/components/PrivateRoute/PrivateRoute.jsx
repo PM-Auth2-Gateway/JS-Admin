@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Route } from 'react-router-dom';
-import { Redirect } from 'react-router';
+import { Route, Redirect } from 'react-router-dom';
 import { isAuthenticatedSelector } from './PrivateRoute.selector';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
