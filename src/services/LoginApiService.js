@@ -27,9 +27,15 @@ export default class LoginApiService {
   }
 
   static async getProfile() {
-    return instance.post('Admin/tokenAndProfile', {
-      session_id: LoginApiService.session_id,
-    });
+    return instance.post(
+      'Admin/tokenAndProfile',
+      {
+        session_id: LoginApiService.session_id,
+      },
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   static buildUrl(authLink) {

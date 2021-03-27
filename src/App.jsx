@@ -11,6 +11,7 @@ import LocalStorageService from './services/LocalStorageService';
 import axios from 'axios';
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
   const [testToken, setTestToken] = React.useState('');
 
   const refresh = async () => {
@@ -20,7 +21,7 @@ function App() {
       {
         withCredentials: true,
         headers: {
-          token: testToken,
+          token: LocalStorageService.getToken(),
         },
       }
     );
