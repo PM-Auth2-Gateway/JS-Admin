@@ -33,7 +33,7 @@ instance.interceptors.response.use(
           }
         )
         .then(({ data }) => {
-          console.log(data);
+          LocalStorageService.setToken(data.token);
           return instance(originalRequest);
         });
     }
