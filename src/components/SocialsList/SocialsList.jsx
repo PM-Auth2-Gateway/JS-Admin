@@ -26,13 +26,14 @@ const SocialsList = () => {
     <Spinner animation='border' />
   ) : (
     <>
-      {all.map(({ id, name, imgUrl, isSetting }) => (
+      {all.map(({ id, name, logo_path, is_setting, is_active }) => (
         <SocialPreview
           key={id}
           id={id}
           name={name}
-          isSetting={isSetting}
-          img={imgUrl}
+          is_setting={is_setting}
+          is_active={is_active}
+          logo_path={logo_path}
         />
       ))}
     </>

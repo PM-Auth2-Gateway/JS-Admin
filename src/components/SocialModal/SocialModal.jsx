@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
@@ -7,6 +7,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import {
   createCurrentSocial,
   loadCurrentSocial,
+  removeCurrentSocial,
   updateCurrentSocial,
 } from '../../ducks/socials/current';
 import { useAppContext } from '../../contexts/App.context';
@@ -31,17 +32,18 @@ const SocialModal = (props) => {
 
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    dispatch(removeCurrentSocial());
+    setShow(false);
+  };
+
+  const handleShow = async () => {
+    if (props.mode === 'update')
+      await dispatch(loadCurrentSocial(appId, props.id));
+    setShow(true);
+  };
 
   const initialValues = props.mode === 'update' ? social.current : emptySocial;
-
-  useEffect(() => {
-    if (props.mode === 'update' && show)
-      dispatch(loadCurrentSocial(appId, props.id));
-
-    return () => {};
-  }, [dispatch, appId, props.id, props.mode, show]);
 
   const create = async (values) => {
     await dispatch(createCurrentSocial(appId, props.id, values));
@@ -61,7 +63,7 @@ const SocialModal = (props) => {
   return (
     <React.Fragment>
       <Button data-test={'open-modal'} variant='primary' onClick={handleShow}>
-        {props.mode === 'create' ? 'Create' : 'Update'}
+        {props.mode === 'create' ? 'Add' : 'Update'}
       </Button>
 
       <Modal show={show} onHide={handleClose} centered>
@@ -74,7 +76,7 @@ const SocialModal = (props) => {
             <Form>
               <Modal.Header closeButton>
                 <Modal.Title>
-                  {props.mode === 'create' ? 'Create' : 'Update'} Social
+                  {props.mode === 'create' ? 'Add' : 'Update'} Social
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
@@ -145,7 +147,7 @@ const SocialModal = (props) => {
                   variant='primary'
                   onClick={handleSubmit}
                 >
-                  {props.mode === 'create' ? 'Create' : 'Update'}
+                  {props.mode === 'create' ? 'Add' : 'Update'}
                 </Button>
               </Modal.Footer>
             </Form>

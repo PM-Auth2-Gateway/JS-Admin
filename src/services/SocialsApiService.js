@@ -33,6 +33,12 @@ export default class SocialsApiService {
     });
   }
 
+  static updateStatusById(appId, id, { status }) {
+    const url = SocialsApiService.#buildUrl(appId);
+
+    return instance.post(url + `/${id}/${status}`);
+  }
+
   static #buildUrl = (appId) => {
     return `/Admin/applications/${appId}/socials`;
   };

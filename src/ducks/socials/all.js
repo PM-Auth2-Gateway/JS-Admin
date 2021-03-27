@@ -1,6 +1,7 @@
 import SocialsApiService from '../../services/SocialsApiService';
 
 const LOAD_ALL = 'socials/all/load';
+const UPDATE_STATUS_BY_ID = 'socials/all/update_by_id/status';
 const CLEAR_ALL = 'socials/all/clear';
 
 const SET_LOADING = 'socials/all/loading/set';
@@ -20,6 +21,26 @@ export const loadAllSocials = (appId) => async (dispatch) => {
   }
 };
 
+export const updateSocialStatusById = (appId, id, { status }) => async (
+  dispatch
+) => {
+  try {
+    dispatch(setLoading(true));
+    const res = await SocialsApiService.updateStatusById(appId, id, { status });
+
+    dispatch(
+      updateStatusById(id, {
+        status: res.data.is_active,
+      })
+    );
+    dispatch(setError(null));
+  } catch (error) {
+    dispatch(setError(error));
+  } finally {
+    dispatch(setLoading(false));
+  }
+};
+
 export const clearAllSocials = () => (dispatch) => {
   dispatch(clearAll());
 };
@@ -31,6 +52,14 @@ export const setSocialsError = (msg) => (dispatch) => {
 const loadAll = (apps) => ({
   type: LOAD_ALL,
   payload: apps,
+});
+
+const updateStatusById = (id, { status }) => ({
+  type: UPDATE_STATUS_BY_ID,
+  payload: {
+    id,
+    status,
+  },
 });
 
 const clearAll = () => ({
@@ -59,6 +88,17 @@ export const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         value: action.payload,
+      };
+    case UPDATE_STATUS_BY_ID:
+      return {
+        ...state,
+        value: state.value.map((elem) => ({
+          ...elem,
+          is_active:
+            elem.id === action.payload.id
+              ? action.payload.status
+              : elem.is_active,
+        })),
       };
     case CLEAR_ALL:
       return {
