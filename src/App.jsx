@@ -11,6 +11,8 @@ import LocalStorageService from './services/LocalStorageService';
 import axios from 'axios';
 
 function App() {
+  const [testToken, setTestToken] = React.useState('');
+
   const refresh = async () => {
     const { data } = await axios.post(
       'https://net-api-hbyuu.ondigitalocean.app/Admin/refreshToken',
@@ -18,18 +20,28 @@ function App() {
       {
         withCredentials: true,
         headers: {
-          token: LocalStorageService.getToken(),
+          token: testToken,
         },
       }
     );
     LocalStorageService.setToken(data.token);
   };
+
+  const getToken = async () => {
+    const { data } = await axios.post(
+      'https://net-api-hbyuu.ondigitalocean.app/Admin/testToken',
+      {}
+    );
+    setTestToken(data);
+  };
+
   return (
     <Router>
       <div className={styles.App}>
         <Navigation />
       </div>
       <div className={styles.container}>
+        <button onClick={getToken}>Get Token</button>
         <button onClick={refresh}>refresh</button>
         <Switch>
           <Route exact path='/applications'>
