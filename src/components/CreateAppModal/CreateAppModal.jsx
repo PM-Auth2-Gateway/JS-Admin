@@ -43,7 +43,7 @@ const CreateAppModal = (props) => {
           onSubmit={onSubmit}
         >
           {({ errors, touched, handleSubmit }) => (
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Modal.Header closeButton>
                 <Modal.Title>Create Application</Modal.Title>
               </Modal.Header>
@@ -81,7 +81,6 @@ const CreateAppModal = (props) => {
                   data-test={'submit-modal'}
                   variant='primary'
                   type='submit'
-                  onClick={handleSubmit}
                 >
                   Create
                 </Button>
