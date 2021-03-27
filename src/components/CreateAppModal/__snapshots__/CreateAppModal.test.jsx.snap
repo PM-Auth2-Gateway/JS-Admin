@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateAppModal Component should render CreateAppModal Component 1`] = `
+exports[`CreateAppModal Component should render component 1`] = `
 <Fragment>
   <Button
     active={false}

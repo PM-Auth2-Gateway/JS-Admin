@@ -1,49 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AppList Component should render AppList Component 1`] = `
-<Container
-  fluid={false}
+<ListGroup
+  variant="flush"
 >
-  <Row
-    className="mb-5 align-items-center"
-    noGutters={false}
+  <ListGroupItem
+    active={false}
+    className="listItem"
+    disabled={false}
+    key="1"
   >
-    <Col>
-      <h2>
-        Applications
-      </h2>
-    </Col>
-    <Col
-      xs="auto"
-    >
-      <CreateAppModal />
-    </Col>
-  </Row>
-  <ListGroup
-    variant="flush"
+    <AppPreview
+      name="Test1"
+      url="applications/1"
+    />
+  </ListGroupItem>
+  <ListGroupItem
+    active={false}
+    className="listItem"
+    disabled={false}
+    key="2"
   >
-    <ListGroupItem
-      active={false}
-      className="listItem"
-      disabled={false}
-      key="1"
-    >
-      <AppPreview
-        name="Test1"
-        url="/applications//1"
-      />
-    </ListGroupItem>
-    <ListGroupItem
-      active={false}
-      className="listItem"
-      disabled={false}
-      key="2"
-    >
-      <AppPreview
-        name="Test2"
-        url="/applications//2"
-      />
-    </ListGroupItem>
-  </ListGroup>
-</Container>
+    <AppPreview
+      name="Test2"
+      url="applications/2"
+    />
+  </ListGroupItem>
+</ListGroup>
 `;

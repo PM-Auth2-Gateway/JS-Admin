@@ -12,15 +12,11 @@ exports[`AppPreview Component should render AppPreview Component 1`] = `
       className="appIcon"
       src="app-icon.svg"
     />
-  </Link>
-  <span
-    className="appName"
-  >
-    <Link
-      to="/application/1"
+    <span
+      className="appName"
     >
       App Name
-    </Link>
-  </span>
+    </span>
+  </Link>
 </div>
 `;

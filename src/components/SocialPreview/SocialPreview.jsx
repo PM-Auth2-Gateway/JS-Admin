@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { Badge, ButtonGroup, Card } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
+import { Badge, ButtonGroup, Card, Button } from 'react-bootstrap';
 
 import SocialModal from '../SocialModal/SocialModal';
 import { useAppContext } from '../../contexts/App.context';
