@@ -12,7 +12,6 @@ import {
 } from '../../ducks/socials/current';
 import { useAppContext } from '../../contexts/App.context';
 
-import emptySocial from '../../data/empty_social.json';
 import selector from './SocialModal.selector';
 import { loadAllSocials } from '../../ducks/socials/all';
 
@@ -43,7 +42,14 @@ const SocialModal = (props) => {
     setShow(true);
   };
 
-  const initialValues = props.mode === 'update' ? social.current : emptySocial;
+  const initialValues =
+    props.mode === 'update'
+      ? social.current
+      : {
+          client_id: '',
+          secret_key: '',
+          scope: '',
+        };
 
   const create = async (values) => {
     await dispatch(createCurrentSocial(appId, props.id, values));
@@ -73,7 +79,7 @@ const SocialModal = (props) => {
           onSubmit={onSubmit}
         >
           {({ errors, touched, handleSubmit }) => (
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Modal.Header closeButton>
                 <Modal.Title>
                   {props.mode === 'create' ? 'Add' : 'Update'} Social
@@ -143,9 +149,8 @@ const SocialModal = (props) => {
                 </Button>
                 <Button
                   data-test={'submit-modal'}
-                  type='button'
                   variant='primary'
-                  onClick={handleSubmit}
+                  type='submit'
                 >
                   {props.mode === 'create' ? 'Add' : 'Update'}
                 </Button>
