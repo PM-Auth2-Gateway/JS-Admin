@@ -7,34 +7,14 @@ import SocialInfo from './components/SocialInfo/SocialInfo';
 import Navigation from './components/Navigation/Navigation';
 
 import styles from './App.module.scss';
-import LocalStorageService from './services/LocalStorageService';
-import axios from 'axios';
 
 function App() {
-  // eslint-disable-next-line no-unused-vars
-  const [testToken, setTestToken] = React.useState('');
-
-  const refresh = async () => {
-    const { data } = await axios.post(
-      'https://net-api-hbyuu.ondigitalocean.app/Admin/refreshToken',
-      {},
-      {
-        withCredentials: true,
-        headers: {
-          token: LocalStorageService.getToken(),
-        },
-      }
-    );
-    LocalStorageService.setToken(data.token);
-  };
-
   return (
     <Router>
       <div className={styles.App}>
         <Navigation />
       </div>
       <div className={styles.container}>
-        <button onClick={refresh}>refresh</button>
         <Switch>
           <Route exact path='/applications'>
             <AppsList />

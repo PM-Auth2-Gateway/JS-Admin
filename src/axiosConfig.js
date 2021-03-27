@@ -14,22 +14,29 @@ instance.interceptors.request.use((config) => {
   return config;
 });
 
-//BUG: Maybe not working due to backend issuses
-// instance.interceptors.response.use(
-//   (response) => {
-//     return response;
-//   },
-//   async (error) => {
-//     const originalRequest = error.config;
-//     if (error.response.status === 401) {
-//       if (LocalStorageService.getToken()) {
-//         const { data } = await instance.post(
-//           `Admin/refreshToken?${LocalStorageService.getToken()}`
-//         );
-//         LocalStorageService.setToken(data.token);
-//         return instance(originalRequest);
-//       }
-//     }
-//     return Promise.reject(error);
-//   }
-// );
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      return instance
+        .post(
+          'Admin/refreshToken',
+          {},
+          {
+            withCredentials: true,
+            headers: {
+              token: LocalStorageService.getToken(),
+            },
+          }
+        )
+        .then(({ data }) => {
+          console.log(data);
+          return instance(originalRequest);
+        });
+    }
+    return Promise.reject(error);
+  }
+);
