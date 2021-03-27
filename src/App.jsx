@@ -12,7 +12,7 @@ import axios from 'axios';
 
 function App() {
   const refresh = async () => {
-    await axios.post(
+    const { data } = await axios.post(
       'https://net-api-hbyuu.ondigitalocean.app/Admin/refreshToken',
       {},
       {
@@ -22,6 +22,7 @@ function App() {
         },
       }
     );
+    LocalStorageService.setToken(data.token);
   };
   return (
     <Router>
