@@ -11,11 +11,12 @@ import LocalStorageService from './services/LocalStorageService';
 import axios from 'axios';
 
 function App() {
-  const refresh = () => {
-    axios.post(
+  const refresh = async () => {
+    await axios.post(
       'https://net-api-hbyuu.ondigitalocean.app/Admin/refreshToken',
       {},
       {
+        withCredentials: true,
         headers: {
           token: LocalStorageService.getToken(),
         },
