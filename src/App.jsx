@@ -24,6 +24,7 @@ function App() {
     );
     LocalStorageService.setToken(data.token);
   };
+
   return (
     <Router>
       <div className={styles.App}>
