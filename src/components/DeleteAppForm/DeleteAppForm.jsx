@@ -1,6 +1,6 @@
 import { Alert, Row, Col } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { useAppContext } from '../../contexts/App.context';
 
 import DeleteAppModal from '../DeleteAppModal/DeleteAppModal';
