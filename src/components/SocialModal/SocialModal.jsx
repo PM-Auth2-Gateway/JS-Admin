@@ -60,7 +60,7 @@ const SocialModal = (props) => {
   };
 
   const onSubmit = async (values) => {
-    (await props.mode) === 'update' ? update(values) : create(values);
+    await (props.mode) === 'update' ? update(values) : create(values);
     await dispatch(loadAllSocials(appId));
 
     handleClose();
