@@ -5,6 +5,7 @@ import IOSDoc from './IOSDoc/IOSDoc';
 import AndroidDoc from './AndroidDoc/AndroidDoc';
 
 import styles from './DocsPage.module.scss';
+import WebDoc from './WebDoc/WebDoc';
 
 const DocsPage = () => {
   return (
@@ -14,10 +15,13 @@ const DocsPage = () => {
           <Col sm={3}>
             <Nav variant='pills' className='flex-column'>
               <Nav.Item>
-                <Nav.Link eventKey='iOS'>iOS</Nav.Link>
+                <Nav.Link eventKey='iOS'>iOS SDK</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey='android'>Android</Nav.Link>
+                <Nav.Link eventKey='android'>Android SDK</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey='web'>Web Widget</Nav.Link>
               </Nav.Item>
             </Nav>
           </Col>
@@ -28,6 +32,9 @@ const DocsPage = () => {
               </Tab.Pane>
               <Tab.Pane eventKey='android'>
                 <AndroidDoc />
+              </Tab.Pane>
+              <Tab.Pane eventKey='web'>
+                <WebDoc />
               </Tab.Pane>
             </Tab.Content>
           </Col>
