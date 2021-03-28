@@ -87,7 +87,6 @@ const GoogleGuide = () => {
         Set up the Google social connection in PM Auth. Make sure you have the
         Client ID and the Client Secret generated.
       </p>
-      <br />
     </div>
   );
 };
