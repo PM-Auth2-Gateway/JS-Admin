@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Badge, ButtonGroup, Card, Button } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 import SocialModal from '../SocialModal/SocialModal';
 import { useAppContext } from '../../contexts/App.context';
@@ -18,6 +19,8 @@ const SocialPreview = ({ id, name, logo_path, is_setting, is_active }) => {
         status: !is_active,
       })
     );
+
+    toast(`${name} was ${is_active ? 'disabled' : 'activated'}`);
   };
 
   return (

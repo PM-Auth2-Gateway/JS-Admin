@@ -14,6 +14,7 @@ import { useAppContext } from '../../contexts/App.context';
 
 import selector from './SocialModal.selector';
 import { loadAllSocials } from '../../ducks/socials/all';
+import { toast } from 'react-toastify';
 
 const SocialSchema = Yup.object().shape({
   client_id: Yup.string().required('Client ID is required'),
@@ -51,10 +52,14 @@ const SocialModal = (props) => {
 
   const create = async (values) => {
     await dispatch(createCurrentSocial(appId, props.id, values));
+
+    toast('Social network settings created successfully');
   };
 
   const update = async (values) => {
     await dispatch(updateCurrentSocial(appId, props.id, values));
+
+    toast('Social network settings updated successfully');
   };
 
   const onSubmit = async (values) => {

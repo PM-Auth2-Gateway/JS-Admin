@@ -6,6 +6,7 @@ import { useAppContext } from '../../contexts/App.context';
 import DeleteAppModal from '../DeleteAppModal/DeleteAppModal';
 
 import { deleteCurrentApp } from '../../ducks/apps/current';
+import { toast } from 'react-toastify';
 
 const DeleteAppForm = () => {
   const history = useHistory();
@@ -16,6 +17,8 @@ const DeleteAppForm = () => {
   const onDelete = async () => {
     await dispatch(deleteCurrentApp(appId));
     history.push('/applications');
+
+    toast(`Application with id ${appId} deleted successfully`);
   };
 
   return (

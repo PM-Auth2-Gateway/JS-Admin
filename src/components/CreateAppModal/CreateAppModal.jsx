@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Formik, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { Button, Modal, Form } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 const AppSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,6 +29,7 @@ const CreateAppModal = (props) => {
   const onSubmit = (values) => {
     props.onSubmit(values);
     handleClose();
+    toast('Application was created successfully');
   };
 
   return (
