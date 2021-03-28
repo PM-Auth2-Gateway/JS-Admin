@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAppContext } from '../../contexts/App.context';
-import { Spinner } from 'react-bootstrap';
 
 import SocialPreview from '../SocialPreview/SocialPreview';
 
 import { loadAllSocials, clearAllSocials } from '../../ducks/socials/all';
 import selector from './SocialsList.selector';
+import Preloader from '../Preloader/Preloader';
 
 const SocialsList = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const SocialsList = () => {
   }, [dispatch, appId]);
 
   return loading ? (
-    <Spinner animation='border' />
+    <Preloader />
   ) : (
     <>
       {all.map(({ id, name, logo_path, is_setting, is_active }) => (

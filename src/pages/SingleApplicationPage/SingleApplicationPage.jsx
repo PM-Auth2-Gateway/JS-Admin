@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import styles from './SingleApplicationPage.module.scss';
 
+import BackButton from '../../components/BackButton/BackButton';
 import AppInfo from '../../components/AppInfo/AppInfo';
 import AppSocialsInfo from '../../components/AppSocialsInfo/AppSocialsInfo';
 import AppDelete from '../../components/DeleteAppForm/DeleteAppForm';
@@ -14,6 +15,11 @@ const SingleApplicationPage = () => {
   return (
     <Container>
       <AppContext.Provider value={{ appId }}>
+        <Row className='mb-4'>
+          <Col>
+            <BackButton />
+          </Col>
+        </Row>
         <Row className='mb-4'>
           <Col className={styles.form}>
             <AppInfo />

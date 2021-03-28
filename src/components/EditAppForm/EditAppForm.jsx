@@ -5,7 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 const AppSchema = Yup.object().shape({
   name: Yup.string()
     .min(5, 'Too Short!')
-    .max(50, 'Too Long!')
+    .max(25, 'Too Long!')
     .required('Name is required'),
 });
 

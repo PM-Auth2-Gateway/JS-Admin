@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Row, Col, Spinner } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import EditAppForm from '../EditAppForm/EditAppForm';
@@ -12,6 +12,7 @@ import {
 
 import selector from './AppInfo.selector';
 import { useAppContext } from '../../contexts/App.context';
+import Preloader from '../Preloader/Preloader';
 
 const AppInfo = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ const AppInfo = () => {
         </Col>
         <Col>
           {loading ? (
-            <Spinner animation='border' />
+            <Preloader />
           ) : (
             <EditAppForm initialValues={current} onEdit={onEdit} />
           )}
