@@ -127,7 +127,7 @@ exports[`Navigation component should be rendered 1`] = `
         Docs
       </NavLink>
     </Nav>
-    <LoginButton />
+    <Login />
   </NavbarCollapse>
 </Navbar>
 `;
