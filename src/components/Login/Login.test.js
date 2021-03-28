@@ -58,14 +58,6 @@ describe('Login component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should redirect to root page on logout', () => {
-    useSelector.mockReturnValue(authData);
-    const component = shallow(<Login />);
-    const logout = component.find('DropdownItem');
-    logout.simulate('click');
-    expect(historyPush).toBeCalledWith('/');
-  });
-
   it('should call dispatch on first render', () => {
     mount(<Login />);
     expect(dispatch).toBeCalledTimes(1);

@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import React, { useEffect } from 'react';
 import { Dropdown, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { getSocials } from '../../ducks/auth/socials';
 import {
   login,
@@ -19,7 +18,6 @@ import styles from './Login.module.scss';
 const Login = () => {
   const dispatch = useDispatch();
   const { socials, authenticated, user } = useSelector(loginSelector);
-  const history = useHistory();
 
   useEffect(() => {
     if (LocalStorageService.getToken()) {
@@ -48,7 +46,6 @@ const Login = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    history.push('/');
   };
 
   return (

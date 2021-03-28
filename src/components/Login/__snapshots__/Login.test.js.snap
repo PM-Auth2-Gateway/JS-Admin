@@ -24,10 +24,20 @@ exports[`Login component should render 1`] = `
           "render": [Function],
         }
       }
+      className="d-flex align-items-center"
       disabled={false}
       key="1"
       onClick={[Function]}
     >
+      <Image
+        className="mr-3"
+        fluid={false}
+        height="20"
+        rounded={false}
+        roundedCircle={false}
+        thumbnail={false}
+        width="20"
+      />
       test
     </DropdownItem>
   </DropdownMenu>
