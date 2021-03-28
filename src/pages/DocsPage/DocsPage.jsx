@@ -3,9 +3,9 @@ import { Row, Tab, Col, Nav } from 'react-bootstrap';
 import classNames from 'classnames';
 import IOSDoc from './IOSDoc/IOSDoc';
 import AndroidDoc from './AndroidDoc/AndroidDoc';
+import WebDoc from './WebDoc/WebDoc';
 
 import styles from './DocsPage.module.scss';
-import WebDoc from './WebDoc/WebDoc';
 
 const DocsPage = () => {
   return (
@@ -15,12 +15,7 @@ const DocsPage = () => {
           <Col sm={3}>
             <Nav
               variant='pills'
-              className={classNames(
-                'flex-column',
-                'mb-4',
-                'pt-2',
-                'sticky-top'
-              )}
+              className={classNames('flex-column', 'mb-4', 'sticky-top')}
             >
               <Nav.Item>
                 <Nav.Link eventKey='web'>Web Widget</Nav.Link>

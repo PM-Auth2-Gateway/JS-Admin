@@ -1,3 +1,7 @@
+.dropdown {
+  z-index: 9999999;
+}
+
 @media(max-width: 767px){
   .dropdown{
     right: auto;
