@@ -27,6 +27,13 @@ const WebDoc = () => {
   return (
     <>
       <div className={styles.paragraph}>
+        <h1>PM Auth Widget for your website</h1>
+        <p>
+          Pm Auth widget allows you to quickly and easily add authorization
+          widget via social networks
+        </p>
+      </div>
+      <div className={styles.paragraph}>
         <h3>Getting started</h3>
         <p>
           Link <code>library.js</code> in your HTML :
