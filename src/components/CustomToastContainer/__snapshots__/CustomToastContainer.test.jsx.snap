@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomToastContainer component should be rendered 1`] = `
+<ToastContainer
+  autoClose={2500}
+  bodyStyle={
+    Object {
+      "color": "black",
+    }
+  }
+  closeButton={[Function]}
+  closeOnClick={true}
+  draggable={true}
+  draggableDirection="x"
+  draggablePercent={80}
+  hideProgressBar={true}
+  newestOnTop={false}
+  pauseOnFocusLoss={true}
+  pauseOnHover={true}
+  position="top-center"
+  role="alert"
+  rtl={false}
+  transition={[Function]}
+/>
+`;
