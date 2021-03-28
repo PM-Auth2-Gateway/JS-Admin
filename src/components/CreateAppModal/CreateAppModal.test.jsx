@@ -22,14 +22,14 @@ describe('CreateAppModal Component', () => {
     useStateMock.mockImplementation((init) => [init, setState]);
   });
 
-  it('should render CreateAppModal Component', function () {
-    const component = shallow(<CreateAppModal />);
+  it('should render component', function () {
+    const component = shallow(<CreateAppModal onSubmit={jest.fn()} />);
 
     expect(component).toMatchSnapshot();
   });
 
   it('should open modal', function () {
-    const component = shallow(<CreateAppModal />);
+    const component = shallow(<CreateAppModal onSubmit={jest.fn()} />);
 
     const openModalBtn = component.find(`[data-test="open-modal"]`);
 

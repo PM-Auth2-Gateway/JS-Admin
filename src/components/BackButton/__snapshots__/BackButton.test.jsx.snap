@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackButton Component should render 1`] = `
+<Button
+  active={false}
+  disabled={false}
+  onClick={[MockFunction]}
+  variant="secondary"
+>
+  Back
+</Button>
+`;

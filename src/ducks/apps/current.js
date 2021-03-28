@@ -22,11 +22,11 @@ export const loadCurrentApp = (id) => async (dispatch) => {
   }
 };
 
-export const updateCurrentApp = (data) => async (dispatch) => {
+export const updateCurrentApp = (id, { name }) => async (dispatch) => {
   try {
     dispatch(setLoading(true));
-    const res = await AppsApiService.updateById(data.id, {
-      name: data.name,
+    const res = await AppsApiService.updateById(id, {
+      name,
     });
 
     dispatch(updateCurrent(res.data));

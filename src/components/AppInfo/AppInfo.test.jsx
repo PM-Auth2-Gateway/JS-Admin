@@ -10,7 +10,12 @@ import {
 } from '../../ducks/apps/current';
 
 import AppInfo from './AppInfo';
-import DeleteAppModal from '../DeleteAppModal/DeleteAppModal';
+
+import { useAppContext } from '../../contexts/App.context';
+
+jest.mock('../../contexts/App.context', () => ({
+  useAppContext: jest.fn(),
+}));
 
 jest.mock('react-router-dom', () => ({
   useRouteMatch: jest.fn(),
@@ -47,6 +52,9 @@ describe('AppInfo Component', () => {
   beforeEach(() => {
     useDispatch.mockReturnValue(dispatch);
 
+    useAppContext.mockReturnValue({
+      appId: 1,
+    });
     useHistory.mockReturnValue({
       push: historyPush,
     });
@@ -79,14 +87,6 @@ describe('AppInfo Component', () => {
     const component = mount(<AppInfo />);
     component.unmount();
 
-    expect(dispatch).toHaveBeenCalledTimes(2);
-  });
-
-  it('should open modal on click "Delete" btn', () => {
-    const component = mount(<AppInfo />);
-
-    const deleteModal = component.find(DeleteAppModal);
-
-    expect(deleteModal.props('onDelete')).toBeDefined();
+    expect(dispatch).toHaveBeenCalledTimes(1);
   });
 });

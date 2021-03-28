@@ -31,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "npm run test -- --coverage --watchAll",
-    "test:staged": "cross-env CI=true react-scripts test",
+    "test:staged": "cross-env CI=true react-scripts test --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

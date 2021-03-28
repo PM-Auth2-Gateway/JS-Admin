@@ -73,6 +73,22 @@ exports[`Login component should render user data if user authenticated 1`] = `
         }
       }
       disabled={false}
+    >
+      <Component
+        to="/applications"
+      >
+        Applications
+      </Component>
+    </DropdownItem>
+    <DropdownItem
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        }
+      }
+      data-test="logout-btn"
+      disabled={false}
       onClick={[Function]}
     >
       Logout

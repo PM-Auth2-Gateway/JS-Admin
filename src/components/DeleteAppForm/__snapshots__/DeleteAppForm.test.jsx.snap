@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteAppForm Component should render component 1`] = `
+<Fragment>
+  <h3
+    className="my-3"
+  >
+    Danger zone
+  </h3>
+  <Alert
+    closeLabel="Close alert"
+    show={true}
+    transition={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "defaultProps": Object {
+          "appear": false,
+          "in": false,
+          "mountOnEnter": false,
+          "timeout": 300,
+          "unmountOnExit": false,
+        },
+        "render": [Function],
+      }
+    }
+    variant="danger"
+  >
+    <Row
+      noGutters={false}
+    >
+      <Col>
+        <h5>
+          Delete this application
+        </h5>
+        <p>
+          All your apps using this client will stop working.
+        </p>
+      </Col>
+      <Col
+        className="align-self-center"
+        xs="auto"
+      >
+        <DeleteAppModal
+          onDelete={[Function]}
+        />
+      </Col>
+    </Row>
+  </Alert>
+</Fragment>
+`;

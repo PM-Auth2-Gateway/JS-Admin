@@ -61,7 +61,7 @@ describe('Login component', () => {
   it('should redirect to root page on logout', () => {
     useSelector.mockReturnValue(authData);
     const component = shallow(<Login />);
-    const logout = component.find('DropdownItem');
+    const logout = component.find('[data-test="logout-btn"]');
     logout.simulate('click');
     expect(historyPush).toBeCalledWith('/');
   });

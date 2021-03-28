@@ -1,169 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AppInfo Component should render AppInfo Component 1`] = `
-<Container
-  fluid={false}
->
-  <div
-    className="appPreview"
+<Fragment>
+  <Row
+    noGutters={false}
   >
-    <img
-      alt="icon"
-      className="appIcon"
-      src="app-icon.svg"
-    />
-    <h2>
-      Test
-    </h2>
-  </div>
-  <div
-    className="form"
-  >
-    <ListGroup
-      variant="flush"
-    >
-      <ListGroupItem
-        active={false}
-        disabled={false}
-      >
-        <Row
-          noGutters={false}
-        >
-          <Col>
-            <h4>
-              Basic Information
-            </h4>
-          </Col>
-          <Col>
-            <EditAppForm
-              initialValues={
-                Object {
-                  "id": 1,
-                  "name": "Test",
-                }
-              }
-              onEdit={[Function]}
-            />
-          </Col>
-        </Row>
-      </ListGroupItem>
-      <ListGroupItem
-        active={false}
-        disabled={false}
-      >
-        <Row
-          noGutters={false}
-        >
-          <Col>
-            <h4>
-              Social networks
-            </h4>
-          </Col>
-          <Col>
-            <Card
-              body={false}
-              className="card"
-            >
-              <Link
-                to="/applications/1/social/1"
-              >
-                <CardBody>
-                  <CardTitle
-                    className="socialPreview"
-                  >
-                    <img
-                      alt="icon"
-                      className="appIcon"
-                      src="google-avatar.png"
-                    />
-                    <p>
-                      Google
-                    </p>
-                  </CardTitle>
-                  <CardText
-                    className="text-muted"
-                  >
-                    Allow your users to login with their Google Account
-                  </CardText>
-                </CardBody>
-              </Link>
-            </Card>
-            <Card
-              body={false}
-              className="card"
-            >
-              <Link
-                to="/applications/1/social/2"
-              >
-                <CardBody>
-                  <CardTitle
-                    className="socialPreview"
-                  >
-                    <img
-                      alt="icon"
-                      className="appIcon"
-                      src="facebook-avatar.png"
-                    />
-                    <p>
-                      Facebook
-                    </p>
-                  </CardTitle>
-                  <CardText
-                    className="text-muted"
-                  >
-                    A fast and convenient way for users to log into your app with Facebook
-                  </CardText>
-                </CardBody>
-              </Link>
-            </Card>
-          </Col>
-        </Row>
-      </ListGroupItem>
-    </ListGroup>
-  </div>
-  <h3
-    className="my-3"
-  >
-    Danger zone
-  </h3>
-  <Alert
-    closeLabel="Close alert"
-    show={true}
-    transition={
-      Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "defaultProps": Object {
-          "appear": false,
-          "in": false,
-          "mountOnEnter": false,
-          "timeout": 300,
-          "unmountOnExit": false,
-        },
-        "render": [Function],
-      }
-    }
-    variant="danger"
-  >
-    <Row
-      noGutters={false}
-    >
-      <Col>
-        <h5>
-          Delete this application
-        </h5>
-        <p>
-          All your apps using this client will stop working.
-        </p>
-      </Col>
-      <Col
-        className="align-self-center"
-        xs="auto"
-      >
-        <DeleteAppModal
-          onDelete={[Function]}
-        />
-      </Col>
-    </Row>
-  </Alert>
-</Container>
+    <Col>
+      <h4>
+        Basic Information
+      </h4>
+    </Col>
+    <Col>
+      <EditAppForm
+        initialValues={
+          Object {
+            "id": 1,
+            "name": "Test",
+          }
+        }
+        onEdit={[Function]}
+      />
+    </Col>
+  </Row>
+</Fragment>
 `;

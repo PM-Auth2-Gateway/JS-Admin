@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppSocialsInfo Component should render component 1`] = `
+<Row
+  noGutters={false}
+>
+  <Col>
+    <h4>
+      Social networks
+    </h4>
+  </Col>
+  <Col>
+    <SocialsList />
+  </Col>
+</Row>
+`;

@@ -1,0 +1,28 @@
+@import '../../styles/Scroll.mixin.scss';
+
+.appPreview {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  overflow-x: auto;
+
+  padding-bottom: 3px;
+  margin-bottom: 40px;
+
+  @include scroll-bar(5px);
+
+  .appIcon {
+    width: 64px;
+    border-radius: 6px;
+    background-color: #eff0f2;
+  }
+}
+
+.form {
+  margin: 0 1rem;
+  border: 1px solid #c9cace;
+  padding: 32px;
+  border-radius: 6px;
+}
+  

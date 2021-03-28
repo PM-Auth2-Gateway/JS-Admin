@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SocialPreview Component should render component 1`] = `
+<Card
+  body={false}
+  className="card"
+>
+  <CardBody>
+    <CardTitle
+      className="socialPreview"
+    >
+      <div
+        className="socialTitle"
+      >
+        <img
+          alt="icon"
+          className="appIcon"
+        />
+        <p />
+      </div>
+      <Badge
+        pill={false}
+        variant="secondary"
+      >
+        None
+      </Badge>
+    </CardTitle>
+    <CardText
+      className="text-muted"
+    >
+      Allow your users to login with their 
+       Account
+    </CardText>
+    <ButtonGroup
+      role="group"
+      toggle={false}
+      vertical={false}
+    >
+      <SocialModal
+        mode="create"
+      />
+    </ButtonGroup>
+  </CardBody>
+</Card>
+`;

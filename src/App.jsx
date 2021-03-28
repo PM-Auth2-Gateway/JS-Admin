@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-import AppsList from './components/AppList/AppList';
-import AppInfo from './components/AppInfo/AppInfo';
-import SocialInfo from './components/SocialInfo/SocialInfo';
-import Navigation from './components/Navigation/Navigation';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import styles from './App.module.scss';
+
+import Navigation from './components/Navigation/Navigation';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import ApplicationsPage from './pages/ApplicationsPage/ApplicationsPage';
+import SingleApplicationPage from './pages/SingleApplicationPage/SingleApplicationPage';
 
 function App() {
   return (
@@ -16,15 +16,8 @@ function App() {
       </div>
       <div className={styles.container}>
         <Switch>
-          <Route exact path='/applications'>
-            <AppsList />
-          </Route>
-          <Route exact path='/applications/:appId'>
-            <AppInfo />
-          </Route>
-          <Route path='/applications/:appId/social/:socialId'>
-            <SocialInfo />
-          </Route>
+          <PrivateRoute exact path='/applications/:appId' component={SingleApplicationPage} />
+          <PrivateRoute exact path='/applications' component={ApplicationsPage} />
         </Switch>
       </div>
     </Router>

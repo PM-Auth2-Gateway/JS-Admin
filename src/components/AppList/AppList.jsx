@@ -1,20 +1,15 @@
-import classNames from 'classnames';
 import { useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { Col, Container, ListGroup, Row, Spinner } from 'react-bootstrap';
+import { ListGroup, Spinner } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearAllApps, loadAllApps } from '../../ducks/apps/all';
+
+import AppPreview from '../AppPreview/AppPreview';
 
 import styles from './AppList.module.scss';
 import selector from './AppList.selector';
 
-import AppPreview from '../AppPreview/AppPreview';
-import CreateAppModal from '../CreateAppModal/CreateAppModal';
-
-import { clearAllApps, loadAllApps } from '../../ducks/apps/all';
-
 const AppList = () => {
   const dispatch = useDispatch();
-  const { url } = useRouteMatch();
 
   const { all, loading } = useSelector(selector);
 
@@ -26,28 +21,16 @@ const AppList = () => {
     };
   }, [dispatch]);
 
-  return (
-    <Container>
-      <Row className={classNames('mb-5', 'align-items-center')}>
-        <Col>
-          <h2>Applications</h2>
-        </Col>
-        <Col xs='auto'>
-          <CreateAppModal />
-        </Col>
-      </Row>
-      {loading ? (
-        <Spinner animation='border' />
-      ) : (
-        <ListGroup variant={'flush'}>
-          {all.map((app) => (
-            <ListGroup.Item key={app.id} className={styles.listItem}>
-              <AppPreview url={`${url}/${app.id}`} name={app.name} />
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
-      )}
-    </Container>
+  return loading ? (
+    <Spinner animation='border' />
+  ) : (
+    <ListGroup variant={'flush'}>
+      {all.map(({ id, name }) => (
+        <ListGroup.Item key={id} className={styles.listItem}>
+          <AppPreview url={`applications/${id}`} name={name} />
+        </ListGroup.Item>
+      ))}
+    </ListGroup>
   );
 };
 
