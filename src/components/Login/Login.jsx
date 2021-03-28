@@ -92,8 +92,8 @@ const Login = () => {
           <Dropdown.Menu
             className={classNames(styles.dropdown, 'dropdown-menu-right')}
           >
-            <Dropdown.Item>
-              <Link to='/applications'>Applications</Link>
+            <Dropdown.Item as={Link} to='/applications'>
+              Applications
             </Dropdown.Item>
             <Dropdown.Item data-test='logout-btn' onClick={handleLogout}>
               Logout
