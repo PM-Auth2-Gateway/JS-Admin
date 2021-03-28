@@ -10,7 +10,7 @@ const isAuthenticatedSelector = createSelector(
 const useCheckAuth = () => {
   const isAuth = useSelector(isAuthenticatedSelector);
 
-  return isAuth || LocalStorageService.getUser();
+  return !!(isAuth || LocalStorageService.getUser());
 };
 
 export default useCheckAuth;
