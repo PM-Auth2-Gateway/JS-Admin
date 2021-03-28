@@ -1,14 +1,13 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import LocalStorageService from './../../services/LocalStorageService';
+import useCheckAuth from './../../hooks/useCheckAuth';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
+  const isAuth = useCheckAuth();
   return (
     <Route
       {...rest}
-      render={() =>
-        LocalStorageService.getUser() ? <Component /> : <Redirect to='/' />
-      }
+      render={() => (isAuth ? <Component /> : <Redirect to='/' />)}
     />
   );
 };
