@@ -9,7 +9,7 @@ import {
   logout,
   setAuthenticated,
   setUser,
-} from './../../ducks/auth/user';
+} from '../../ducks/auth/user';
 import LocalStorageService from './../../services/LocalStorageService';
 import LoginApiService from './../../services/LoginApiService';
 import { loginSelector } from './Login.selector';
