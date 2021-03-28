@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Image, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import LoginButton from './../LoginButton/LoginButton';
+import Login from './../Login/Login';
 
 import styles from './Navigation.module.scss';
 
@@ -38,7 +38,7 @@ const Navigation = () => {
             Docs
           </Nav.Link>
         </Nav>
-        <LoginButton />
+        <Login />
       </Navbar.Collapse>
     </Navbar>
   );
