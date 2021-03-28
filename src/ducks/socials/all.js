@@ -1,4 +1,5 @@
 import SocialsApiService from '../../services/SocialsApiService';
+import { toast } from 'react-toastify';
 
 const LOAD_ALL = 'socials/all/load';
 const UPDATE_STATUS_BY_ID = 'socials/all/update_by_id/status';
@@ -34,8 +35,12 @@ export const updateSocialStatusById = (appId, id, { status }) => async (
       })
     );
     dispatch(setError(null));
+
+    toast(`Social network was ${!status ? 'disabled' : 'activated'}`);
   } catch (error) {
     dispatch(setError(error));
+
+    toast.error('Something went wrong');
   } finally {
     dispatch(setLoading(false));
   }

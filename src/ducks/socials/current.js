@@ -1,4 +1,5 @@
 import SocialsApiService from '../../services/SocialsApiService';
+import { toast } from 'react-toastify';
 
 const SET_CURRENT = 'socials/current/set';
 const UPDATE_CURRENT = 'socials/current/update';
@@ -36,8 +37,12 @@ export const createCurrentSocial = (
 
     dispatch(updateCurrent(res.data));
     dispatch(setError(null));
+
+    toast('Social network settings created successfully');
   } catch (error) {
     dispatch(setError(error));
+
+    toast.error('Something went wrong');
   } finally {
     dispatch(setLoading(false));
   }
@@ -58,8 +63,12 @@ export const updateCurrentSocial = (
 
     dispatch(updateCurrent(res.data));
     dispatch(setError(null));
+
+    toast('Social network settings updated successfully');
   } catch (error) {
     dispatch(setError(error));
+
+    toast.error('Something went wrong');
   } finally {
     dispatch(setLoading(false));
   }

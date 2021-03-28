@@ -1,7 +1,6 @@
 import { Formik, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { Form, Button } from 'react-bootstrap';
-import { toast } from 'react-toastify';
 
 const AppSchema = Yup.object().shape({
   name: Yup.string()
@@ -13,8 +12,6 @@ const AppSchema = Yup.object().shape({
 const EditAppForm = ({ initialValues, onEdit }) => {
   const onSubmit = (values) => {
     onEdit(values);
-
-    toast('Application info updated successfully');
   };
 
   return (
