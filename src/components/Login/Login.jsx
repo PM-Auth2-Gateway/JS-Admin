@@ -66,7 +66,17 @@ const Login = () => {
           >
             {socials &&
               socials.map((soc) => (
-                <Dropdown.Item key={soc.id} onClick={() => handleLogin(soc.id)}>
+                <Dropdown.Item
+                  key={soc.id}
+                  onClick={() => handleLogin(soc.id)}
+                  className={classNames('d-flex', 'align-items-center')}
+                >
+                  <Image
+                    src={soc.logoPath}
+                    width='20'
+                    height='20'
+                    className='mr-3'
+                  />
                   {soc.name}
                 </Dropdown.Item>
               ))}
