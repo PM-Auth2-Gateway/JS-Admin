@@ -35,12 +35,12 @@ const IOSDoc = () => {
         </SyntaxHighlighter>
       </div>
       <div className={styles.paragraph}>
-        <h1>Details</h1>
+        <h3>Details</h3>
         This implementation uses <code>ASWebAuthenticationSession</code> to
         securely show a web view pointing to the Facebook and Google.
       </div>
       <div className={styles.paragraph}>
-        <h1>Dependencies</h1>
+        <h3>Dependencies</h3>
         <p>
           <a href='https://github.com/gr-yarik/PMNetworking' target='blank'>
             PMNetworking

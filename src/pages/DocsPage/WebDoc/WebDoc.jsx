@@ -44,15 +44,17 @@ const WebDoc = () => {
       </div>
       <div className={styles.paragraph}>
         <h3>Options</h3>
-        <SyntaxHighlighter language='html'>
-          {`<div id="container"><div>`}
-        </SyntaxHighlighter>
         <SyntaxHighlighter language='javascript'>{code2}</SyntaxHighlighter>
         <div className={styles.paragraph}>
           <h4>
             <code>callback</code> option
           </h4>
         </div>
+        <p>
+          This function should take an object with user information as the first
+          parameter, and an object with errors as the second If the profile is
+          successfully received, the function will be called with parameters
+        </p>
         <SyntaxHighlighter language='javascript'>
           callback(userProfile, null);
         </SyntaxHighlighter>
@@ -92,8 +94,11 @@ const WebDoc = () => {
             <p>Using this object, you can customize the display of buttons</p>
             <ul>
               <li>
-                This property specifies how social buttons will be displayed
-                Possible options:{' '}
+                <strong>
+                  <code>direction</code> property
+                </strong>
+                <br /> This property specifies how social buttons will be
+                displayed Possible options:{' '}
                 <code>row / row-reverse / column / column-reverse</code>
                 <br />
                 Default value: <code>row</code>

@@ -43,14 +43,14 @@ const AndroidDoc = () => {
       </div>
       <div className={styles.paragraph}>
         <h3>Integrate the PMAuth library</h3>
-        1. In your project, open{' '}
+        In your project, open{' '}
         <code className={styles.codePath}>
           Files {'>'} New {'>'} Import Module {'>'} Select source directory with
           dowloaded PMAuth library {'>'} Check “Import” and set the Module Name
           for library {'>'} Finish.
         </code>
         <p>
-          2. In your project, open{' '}
+          In your project, open{' '}
           <code className={styles.codePath}>
             your_app {'>'} Gradle Scripts {'>'} build.gradle (Module: app) and
             add the following
@@ -61,12 +61,12 @@ const AndroidDoc = () => {
         <SyntaxHighlighter language='kotlin'>
           implementation project(path: ':module-name')
         </SyntaxHighlighter>
-        <p>3. Build your project.</p>
+        <p>Build your project.</p>
       </div>
       <div className={styles.paragraph}>
         <h3>Edit Your Manifest</h3>
         <p>
-          1. Open the{' '}
+          Open the{' '}
           <code className={styles.codePath}>
             /app/manifest/AndroidManifest.xml
           </code>{' '}
@@ -78,14 +78,14 @@ const AndroidDoc = () => {
         </p>
         <SyntaxHighlighter language='xml'>{androidCode2}</SyntaxHighlighter>
         <p>
-          3. Set <code>launchMode</code> for your login activity:
+          Set <code>launchMode</code> for your login activity:
         </p>
         <SyntaxHighlighter language='kotlin'>
           android:launchMode="singleTop"
         </SyntaxHighlighter>
       </div>
       <div className={styles.paragraph}>
-        <h3>3. Setup PMOptions</h3>
+        <h3>Setup PMOptions</h3>
         <p>
           Now create PmOptions instance in your Activity or Fragment to
           configure library.
@@ -104,12 +104,12 @@ const AndroidDoc = () => {
         </p>
       </div>
       <div className={styles.paragraph}>
-        <h3>4. Initiate PmClient</h3>
+        <h3>Initiate PmClient</h3>
         <p>Initiate PmClient in your Activity or Fragment.</p>
         <SyntaxHighlighter language='kotlin'>
           {`val client = PmLogin.PmClient(options)`}
         </SyntaxHighlighter>
-        <h3>5. Register a Callback</h3>
+        <h3>Register a Callback</h3>
         <p>
           Now observe on a <code>client.loginResult</code> to handle login
           responses.
@@ -121,7 +121,7 @@ const AndroidDoc = () => {
         </SyntaxHighlighter>
       </div>
       <div className={styles.paragraph}>
-        <h3>6. Add the Login Button</h3>
+        <h3>Add the Login Button</h3>
         <p>
           The simplest way to add PMAuth login to your app is to add{' '}
           <code>PMAuthButton</code>. When someone clicks on the button, the
@@ -131,7 +131,7 @@ const AndroidDoc = () => {
         <SyntaxHighlighter language='xml'>{androidCode6}</SyntaxHighlighter>
       </div>
       <div className={styles.paragraph}>
-        <h3>7. Register a Listener</h3>
+        <h3>Register a Listener</h3>
         <p>
           Set a click listener to open a Pop-Up with login through social
           networks. It is recommended to use <code>onSingleClickListener</code>,
