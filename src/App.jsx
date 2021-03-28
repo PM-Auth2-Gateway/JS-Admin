@@ -8,6 +8,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import ApplicationsPage from './pages/ApplicationsPage/ApplicationsPage';
 import SingleApplicationPage from './pages/SingleApplicationPage/SingleApplicationPage';
 import DocsPage from './pages/DocsPage/DocsPage';
+import GuidePage from './pages/GuidePage/GuidePage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             component={ApplicationsPage}
           />
           <Route path='/docs' component={DocsPage} />
+          <Route path='/guide' component={GuidePage} />
         </Switch>
       </div>
     </Router>
