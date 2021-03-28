@@ -1,14 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import { isAuthenticatedSelector } from './PrivateRoute.selector';
+import LocalStorageService from './../../services/LocalStorageService';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const isAuthenticated = useSelector(isAuthenticatedSelector);
   return (
     <Route
       {...rest}
-      render={() => (isAuthenticated ? <Component /> : <Redirect to='/' />)}
+      render={() =>
+        LocalStorageService.getUser() ? <Component /> : <Redirect to='/' />
+      }
     />
   );
 };
