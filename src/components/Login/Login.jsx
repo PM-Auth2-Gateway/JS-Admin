@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { useEffect } from 'react';
 import { Dropdown, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getSocials } from '../../ducks/auth/socials';
 import {
   login,
@@ -92,7 +92,12 @@ const Login = () => {
           <Dropdown.Menu
             className={classNames(styles.dropdown, 'dropdown-menu-right')}
           >
-            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+            <Dropdown.Item>
+              <Link to='/applications'>Applications</Link>
+            </Dropdown.Item>
+            <Dropdown.Item data-test='logout-btn' onClick={handleLogout}>
+              Logout
+            </Dropdown.Item>
           </Dropdown.Menu>
         </>
       )}

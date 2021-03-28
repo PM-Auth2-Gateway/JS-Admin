@@ -62,36 +62,6 @@ exports[`Navigation component should be rendered 1`] = `
           }
         }
         disabled={false}
-        to="/applications"
-      >
-        Applications
-      </NavLink>
-      <NavLink
-        activeClassName="text-primary"
-        as={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "propTypes": Object {
-              "activeClassName": [Function],
-              "activeStyle": [Function],
-              "aria-current": [Function],
-              "className": [Function],
-              "exact": [Function],
-              "innerRef": [Function],
-              "isActive": [Function],
-              "location": [Function],
-              "onClick": [Function],
-              "replace": [Function],
-              "sensitive": [Function],
-              "strict": [Function],
-              "style": [Function],
-              "target": [Function],
-              "to": [Function],
-            },
-            "render": [Function],
-          }
-        }
-        disabled={false}
         to="/guide"
       >
         Guide
