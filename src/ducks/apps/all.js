@@ -1,4 +1,5 @@
 import AppsApiService from '../../services/AppsApiService';
+import { toast } from 'react-toastify';
 
 const LOAD_ALL = 'apps/all/load';
 const ADD_ALL = 'apps/all/add';
@@ -28,8 +29,12 @@ export const addApp = ({ name }) => async (dispatch) => {
 
     dispatch(addAll(res.data));
     dispatch(setError(null));
+
+    toast(`Application ${name} was created successfully`);
   } catch (error) {
     dispatch(setError(error));
+
+    toast.error('Something went wrong');
   } finally {
     dispatch(setLoading(false));
   }

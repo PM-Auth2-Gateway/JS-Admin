@@ -1,4 +1,5 @@
 import AppsApiService from '../../services/AppsApiService';
+import { toast } from 'react-toastify';
 
 const SET_CURRENT = 'apps/current/set';
 const UPDATE_CURRENT = 'app/current/update';
@@ -31,8 +32,12 @@ export const updateCurrentApp = (id, { name }) => async (dispatch) => {
 
     dispatch(updateCurrent(res.data));
     dispatch(setError(null));
+
+    toast('Application info updated successfully');
   } catch (error) {
     dispatch(setError(error));
+
+    toast.error('Something went wrong');
   } finally {
     dispatch(setLoading(false));
   }
@@ -45,8 +50,12 @@ export const deleteCurrentApp = (id) => async (dispatch) => {
 
     dispatch(deleteCurrent());
     dispatch(setError(null));
+
+    toast(`Application with id ${id} deleted successfully`);
   } catch (error) {
     dispatch(setError(error));
+
+    toast.error(`Something went wrong`);
   } finally {
     dispatch(setLoading(false));
   }

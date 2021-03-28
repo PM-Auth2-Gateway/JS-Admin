@@ -1,5 +1,6 @@
 import LoginApiService from './../../services/LoginApiService';
 import LocalStorageService from './../../services/LocalStorageService';
+import { toast } from 'react-toastify';
 
 const SET_USER = 'auth/user/set';
 const SET_LOADING = 'auth/user/loading/set';
@@ -40,6 +41,8 @@ export const login = () => async (dispatch) => {
     dispatch(setUser(data));
     dispatch(setAuthenticated(true));
     dispatch(setLoading(false));
+
+    toast(`Welcome ${data.firstName} ${data.lastName}!`);
   } catch (e) {
     dispatch(setError(e));
   } finally {
@@ -50,6 +53,8 @@ export const login = () => async (dispatch) => {
 export const logout = () => (dispatch) => {
   LocalStorageService.clear();
   dispatch(clear());
+
+  toast('Leaving already? :(');
 };
 
 const initialState = {
