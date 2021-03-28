@@ -18,9 +18,7 @@ import { loadAllSocials } from '../../ducks/socials/all';
 const SocialSchema = Yup.object().shape({
   client_id: Yup.string().required('Client ID is required'),
   secret_key: Yup.string().required('Secret key is required'),
-  scope: Yup.string()
-    .matches(/^[a-zA-Z.\s-]*$/gm, 'Must be separated by spaces')
-    .required('Scope is required'),
+  scope: Yup.string().required('Scope is required'),
 });
 
 const SocialModal = (props) => {
@@ -60,7 +58,7 @@ const SocialModal = (props) => {
   };
 
   const onSubmit = async (values) => {
-    await (props.mode) === 'update' ? update(values) : create(values);
+    props.mode === 'update' ? await update(values) : await create(values);
     await dispatch(loadAllSocials(appId));
 
     handleClose();
