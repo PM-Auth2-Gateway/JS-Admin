@@ -105,7 +105,8 @@ const WebDoc = () => {
                   <code>direction</code> property
                 </strong>
                 <br /> This property specifies how social buttons will be
-                displayed Possible options:{' '}
+                displayed
+                <br /> Possible options:{' '}
                 <code>row / row-reverse / column / column-reverse</code>
                 <br />
                 Default value: <code>row</code>
