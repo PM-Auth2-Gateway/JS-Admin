@@ -14,7 +14,7 @@ const HomePage = () => (
         size={'lg'}
         className='mr-3'
       >
-        Guids
+        Guides
       </Button>
       <Button variant='outline-dark' as={Link} to={'/docs'} size={'lg'}>
         Docs
