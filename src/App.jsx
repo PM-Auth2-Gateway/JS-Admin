@@ -12,7 +12,7 @@ import styles from './App.module.scss';
 
 import DocsPage from './pages/DocsPage/DocsPage';
 import GuidePage from './pages/GuidePage/GuidePage';
-
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
   return (
@@ -34,6 +34,7 @@ function App() {
           />
           <Route path='/docs' component={DocsPage} />
           <Route path='/guide' component={GuidePage} />
+          <Route exact path='/' component={HomePage} />
         </Switch>
         <CustomToastContainer />
       </div>
