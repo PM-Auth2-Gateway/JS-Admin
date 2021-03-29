@@ -130,8 +130,7 @@ const SocialModal = (props) => {
                     </Form.Control.Feedback>
                   ) : null}
                   <Form.Text className={'text-muted'}>
-                    You can specify multiple valid client IDs by
-                    comma-separating them
+                    You can specify multiple scopes by space them
                   </Form.Text>
                 </Form.Group>
               </Modal.Body>
