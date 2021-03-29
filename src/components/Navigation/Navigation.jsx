@@ -8,7 +8,7 @@ import styles from './Navigation.module.scss';
 
 const Navigation = () => {
   return (
-    <Navbar collapseOnSelect expand='md' className={styles.border}>
+    <Navbar collapseOnSelect expand='md' className={styles.nav}>
       <NavLink to='/'>
         <Navbar.Brand>
           <Image
