@@ -79,6 +79,13 @@ exports[`Login component should render user data if user authenticated 1`] = `
       as={
         Object {
           "$$typeof": Symbol(react.forward_ref),
+          "propTypes": Object {
+            "innerRef": [Function],
+            "onClick": [Function],
+            "replace": [Function],
+            "target": [Function],
+            "to": [Function],
+          },
           "render": [Function],
         }
       }

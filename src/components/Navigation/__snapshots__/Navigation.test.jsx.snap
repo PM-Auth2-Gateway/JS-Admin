@@ -2,7 +2,7 @@
 
 exports[`Navigation component should be rendered 1`] = `
 <Navbar
-  className="border"
+  className="nav"
   collapseOnSelect={true}
   expand="md"
   variant="light"

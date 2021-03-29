@@ -2,17 +2,12 @@ import React from 'react';
 import Login from './Login';
 import { shallow, mount } from 'enzyme';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import LocalStorageService from './../../services/LocalStorageService';
 import LoginApiService from '../../services/LoginApiService';
 
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),
   useDispatch: jest.fn(),
-}));
-
-jest.mock('react-router-dom', () => ({
-  useHistory: jest.fn(),
 }));
 
 jest.mock('./../../services/LocalStorageService');
@@ -41,9 +36,6 @@ describe('Login component', () => {
   beforeEach(() => {
     useDispatch.mockReturnValue(dispatch);
     useSelector.mockReturnValue(data);
-    useHistory.mockReturnValue({
-      push: historyPush,
-    });
   });
 
   it('should render', () => {
@@ -56,14 +48,6 @@ describe('Login component', () => {
 
     const component = shallow(<Login />);
     expect(component).toMatchSnapshot();
-  });
-
-  it('should redirect to root page on logout', () => {
-    useSelector.mockReturnValue(authData);
-    const component = shallow(<Login />);
-    const logout = component.find('[data-test="logout-btn"]');
-    logout.simulate('click');
-    expect(historyPush).toBeCalledWith('/');
   });
 
   it('should call dispatch on first render', () => {
